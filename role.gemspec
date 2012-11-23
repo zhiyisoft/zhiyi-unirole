@@ -7,14 +7,13 @@ require "role/version"
 Gem::Specification.new do |s|
   s.name        = "role"
   s.version     = Role::VERSION
-  s.authors     = ["TODO: XieGang"]
-  s.email       = ["TODO: tianbymy@163.com xiegang@zhiyisoft.com"]
-  s.homepage    = "TODO: index"
+  s.authors     = ["TODO: Your name"]
+  s.email       = ["TODO: Your email"]
+  s.homepage    = "TODO"
   s.summary     = "TODO: Summary of Role."
-  s.description = "TODO: 角色管理"
+  s.description = "TODO: Description of Role."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.2.9"
   # s.add_dependency "jquery-rails"
