@@ -1,3 +1,3 @@
-module Role
+module Unirole
   VERSION = "0.0.1"
 end
