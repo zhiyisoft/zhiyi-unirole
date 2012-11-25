@@ -2,6 +2,9 @@
 ENV["RAILS_ENV"] = "test"
 
 require 'mongoid'
+ENV["MONGOID_ENV"] = "test"
+Mongoid.load!(File.expand_path("../dummy/config/mongoid.yml",  __FILE__))
+
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
 require 'rspec/rails'
