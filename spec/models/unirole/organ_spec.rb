@@ -30,6 +30,11 @@ module Unirole
         @kaifa_ke.children.should include(@zuanjin_team)
         @snqk_organ.children.should_not include(@zuanjin_team)
       end
-    end  
+
+      it "上级单位的等级必须高于下级单位" do
+        @kaifa_ke.rank.member_of?(@snqk_organ.rank).should be_true
+        expect {@kaifa_ke.update_attributes(:parent => @zuanjin_team)}.to raise_error
+      end
+    end
   end
 end
