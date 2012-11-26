@@ -13,5 +13,4 @@ FactoryGirl.define do
     seq 30
     name "股级"
   end       
-
 end
