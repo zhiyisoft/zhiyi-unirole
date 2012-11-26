@@ -46,6 +46,14 @@ module Unirole
         @kaifa_ke.full_name.should == "#{@snqk_organ.name}/#{@kaifa_ke.name}"
         @zuanjin_team.full_name.should == "#{@snqk_organ.name}/#{@kaifa_ke.name}/#{@zuanjin_team.name}"
       end
+
+      it "由单位全名推导单位" do
+        "#{@snqk_organ.name}/#{@kaifa_ke.name}/#{@zuanjin_team.name}".to_organ.should == @zuanjin_team
+        "#{@snqk_organ.name}/#{@kaifa_ke.name}".to_organ.should == @kaifa_ke
+        "#{@snqk_organ.name}".to_organ.should == @snqk_organ
+        expect {"#{@chongqing_organ.name}/#{@kaifa_ke.name}/#{@zuanjin_team.name}".to_organ}.to raise_error
+        expect {"#{@snqk_organ.name}/#{@dijian_ke.name}/#{@zuanjin_team.name}".to_organ}.to raise_error
+      end
     end
   end
 end
