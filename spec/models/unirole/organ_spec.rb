@@ -36,5 +36,16 @@ module Unirole
         expect {@kaifa_ke.update_attributes(:parent => @zuanjin_team)}.to raise_error
       end
     end
+
+    describe "单位全名" do
+      it "顶级单位全名即自身名称" do
+        @snqk_organ.full_name.should == @snqk_organ.name
+      end
+
+      it "二级单位或者三级单位全名包括所有上级单位层次" do
+        @kaifa_ke.full_name.should == "#{@snqk_organ.name}/#{@kaifa_ke.name}"
+        @zuanjin_team.full_name.should == "#{@snqk_organ.name}/#{@kaifa_ke.name}/#{@zuanjin_team.name}"
+      end
+    end
   end
 end

@@ -17,5 +17,10 @@ module Unirole
     def children
       Organ.where(:parent_id => _id).inject([])  {|s,x| s << x}
     end
+
+    def full_name
+      return name unless parent
+      parent.full_name + "/" + name
+    end
   end
 end
