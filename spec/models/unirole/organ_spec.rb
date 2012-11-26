@@ -15,8 +15,7 @@ module Unirole
     end
 
     describe "上下级单位" do
-      it "任一单位最多只能有一个上级单位" do
-        [@snqk_organ, @chongqing_organ].should include(@kaifa_ke.parent)
+      it "单位有可能不存在上级单位" do
         @snqk_organ.parent.should == nil
       end
 
