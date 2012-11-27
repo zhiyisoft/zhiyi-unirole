@@ -1,4 +1,4 @@
 module Unirole
-  class Membership
+  module OrgansHelper
   end
 end

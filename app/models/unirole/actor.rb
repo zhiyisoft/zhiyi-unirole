@@ -1,5 +1,4 @@
 module Unirole
-  class Actor < ActiveRecord::Base
-    # attr_accessible :title, :body
+  class Actor
   end
 end
