@@ -1,18 +1,13 @@
 # -*- coding: utf-8 -*-
 
 FactoryGirl.define do
-  factory :snqk_organ, :class => Unirole::Organ do
-    name "蜀南气矿"
-    before(:create) do |f|
-      f.rank = Unirole::Rank.find_by(:name => '处级')
-    end
-  end 
-
-  factory :chongqing_organ, :class => Unirole::Organ do
-    name "重庆气矿"
-    before(:create) do |f|
-      f.rank = Unirole::Rank.find_by(:name => '处级')
-    end
+  {:snqk_organ => "蜀南气矿", :chongqing_organ => "重庆气矿"}.each do |k,v|
+    factory k, :class => Unirole::Organ do
+      name v
+      before(:create) do |f|
+        f.rank = Unirole::Rank.find_by(:name => '处级')
+      end
+    end 
   end
   
   {:kaifa_ke => "开发科", :dijian_ke => "地建科"}.each do |k,v|
