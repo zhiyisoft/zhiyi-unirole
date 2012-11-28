@@ -133,6 +133,7 @@ DEPENDENCIES
   factory_girl_rails
   haml
   jquery-rails
+  mongoid
   rspec-rails
   shoulda-matchers
   slim
