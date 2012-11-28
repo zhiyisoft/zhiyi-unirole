@@ -1,8 +1,9 @@
 # require_dependency "unirole/application_controller"
 
 module Unirole
-  class OrgansController < UniroleController
+  class DashboardController < UniroleController
     def index
+      puts "dashboard index"
     end
   end
 end
