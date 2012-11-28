@@ -7,6 +7,8 @@ module Unirole
     belongs_to :membership, :class_name => "Unirole::Membership"
     belongs_to :organ, :class_name => "Unirole::Organ"
 
+    has_and_belongs_to_many :actors, :class_name => "Unirole::User"
+
     def to_s
       organ.full_name + ":" + membership.name
     end
