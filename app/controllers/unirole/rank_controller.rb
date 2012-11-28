@@ -2,8 +2,8 @@
 
 module Unirole
   class RankController < UniroleController
-    def index
-      @rank  = Rank.all
+    def index      
+      @rank = Rank.all
     end
     
     def new 
@@ -11,8 +11,14 @@ module Unirole
     end
     
     def create
-      
+      @rank = Rank.new(params[:rank])
+      @rank.save
     end  
 
+    def show
+    end
+
+    def destroy
+    end
   end
 end
