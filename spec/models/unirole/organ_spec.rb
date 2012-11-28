@@ -8,9 +8,11 @@ module Unirole
     
       [:chu_rank, :ke_rank, :gu_rank].each {|x| FactoryGirl.create x}
 
-      (@snqk_organ, @chongqing_organ, @kaifa_ke, @dijian_ke, @gongcheng_team, @zuanjin_team) = 
+      (@snqk_organ, @chongqing_organ, 
+       @cq_kaifa_ke, @kaifa_ke, @dijian_ke, 
+       @gongcheng_team, @zuanjin_team) = 
         [:snqk_organ, :chongqing_organ, 
-         :kaifa_ke, :dijian_ke, 
+         :cq_kaifa_ke, :kaifa_ke, :dijian_ke, 
          :gongcheng_team, :zuanjin_team].map {|x| FactoryGirl.create x}
     end
 
@@ -22,7 +24,7 @@ module Unirole
       it "任一单位可以有多个下级单位，或者没有" do
         @snqk_organ.children.should include(@kaifa_ke)
         @zuanjin_team.children.size.should == 0
-        @chongqing_organ.children.size.should == 0
+        @cq_kaifa_ke.children.size.should == 0
       end
 
       it "任一单位的下属单位只能是直接下级" do
