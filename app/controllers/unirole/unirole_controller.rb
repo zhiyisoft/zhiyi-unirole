@@ -1,6 +1,7 @@
 # require_dependency "unirole/application_controller"
 
 module Unirole
-  class OrgansController < UniroleController
+  class UniroleController < ActionController::Base
+    layout "unirole"
   end
 end

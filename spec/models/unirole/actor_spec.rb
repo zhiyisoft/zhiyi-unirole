@@ -6,9 +6,11 @@ module Unirole
 
     before(:each) do
       [:chu_rank, :ke_rank, :gu_rank].each {|x| FactoryGirl.create x}
+
       [:snqk_organ, :chongqing_organ, 
        :kaifa_ke, :dijian_ke, 
        :gongcheng_team, :zuanjin_team].each {|x| FactoryGirl.create x}
+
       [:leader, :member].each {|x| FactoryGirl.create x}
 
       (@snqk_leader, @kaifa_ke_leader, @kaifa_ke_member) = 
