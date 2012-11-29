@@ -1,2 +1,35 @@
-- @organs.each do |organ|
-  =organs
+div class="data_bar"
+  h3 添加组织机构
+  form id="organs_form" action="#{organs_path}" method="post"
+
+    label for="organ[rank_id]" 等级
+    select name="organ[rank_id]" onchange="get_parent($(this).val())"
+      option value="" 请选择等级
+      -Unirole::Rank.all.each_with_index do |list|
+        option value="#{list.id}" =list.name
+
+    label for="organ[parent_id]" 上级单位
+    select name="organ[parent_id]"
+      option value="" 无
+
+    label for="organ[name]" 名称
+    input id="organ_name" name="organ[name]" type="text" value=""
+
+    input type="submit" value="添加"
+div class="data_list"
+  table
+    thead
+      tr
+        th 序号
+        th 名称
+        th 上级单位
+        th 等级
+    tbody
+      - @organs.each_with_index do |organ,index|
+        tr
+          td =index+1
+          td =organ.name
+          td 
+            - unless organ.parent.nil?
+              = organ.parent              
+          td =organ.rank.name
