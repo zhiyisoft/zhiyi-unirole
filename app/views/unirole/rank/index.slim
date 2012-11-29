@@ -5,11 +5,22 @@ div class="data_bar"
     label for="name" 等级名称：
     input id="rank[name]" name="rank[name]" type="text" value=""
     input type="submit" value="添加" 
-    span =flash[:notice]
+    span id="show_span_for_notice"
+      =flash[:notice]
 div class="data_list"
-  ul
-    - @rank.each do |rank|
-      li
-        span =rank.seq
-        span =rank.name
-        = link_to "删除",rank_path(rank),:confirm=>"您是否要删除此记录?",:method=>:delete  
+  table
+    thead
+      tr
+        th 序号
+        th 等级标示
+        th 等级名称
+        th
+    tbody
+    - @rank.each_with_index do |rank,index|
+      tr id=rank.id
+        td =index+1
+        td 
+          input value=rank.seq name="seq" type="text" readonly="readonly"
+        td 
+          input value=rank.name name="name" type="text" readonly="readonly"
+        td = link_to "删除",rank_path(rank),:confirm=>"您是否要删除此记录?",:method=>:delete  

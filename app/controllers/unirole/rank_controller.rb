@@ -16,6 +16,15 @@ module Unirole
         redirect_to :controller =>"rank",:action=>"index"        
       end
     end  
+    
+    def update
+      @rank = Rank.find(params[:id])
+      if @rank.update_attribute(params[:key],params[:value])
+        render :json=>'{"status":200,"desc":"success"}'
+      else
+        render :json =>'{"status":500,"desc":"error"}'
+      end
+    end
 
     def destroy
       @rank = Rank.find(params[:id])
