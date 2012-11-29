@@ -1,6 +1,6 @@
 module Unirole
   class Rank
-    include Mongoid::Documenbt
+    include Mongoid::Document
 
     field :seq, :type => Integer
     validates :seq, :presence => true
