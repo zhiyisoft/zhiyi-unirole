@@ -1,5 +1,15 @@
-p 添加
-
--@rank.each do |rank|
-  p rank.name
-  p rank.seq
+div class="data_bar"
+  form id="rank_form" action="#{rank_index_path}" method="post" 
+    label for="seq" 等级标示：
+    input id="rank[seq]" name="rank[seq]" type="text" value=""
+    label for="name" 等级名称：
+    input id="rank[name]" name="rank[name]" type="text" value=""
+    input type="submit" value="添加" 
+    span =flash[:notice]
+div class="data_list"
+  ul
+    - @rank.each do |rank|
+      li
+        span =rank.seq
+        span =rank.name
+        = link_to "删除",rank_path(rank),:confirm=>"您是否要删除此记录?",:method=>:delete  

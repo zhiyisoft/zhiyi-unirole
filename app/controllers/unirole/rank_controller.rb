@@ -1,4 +1,4 @@
-#require_dependency "unirole/unirole_controller"
+#require_bdependency "unirole/unirole_controller"
 
 module Unirole
   class RankController < UniroleController
@@ -6,19 +6,25 @@ module Unirole
       @rank = Rank.all
     end
     
-    def new 
-      @rank = Rank.new
-    end
-    
     def create
       @rank = Rank.new(params[:rank])
-      @rank.save
+      if @rank.save
+        flash[:notice] = "save success!"
+        redirect_to  :controller =>"rank",:action=>"index"
+      else
+        flash[:notice] = "save error!"
+        redirect_to :controller =>"rank",:action=>"index"        
+      end
     end  
 
-    def show
-    end
-
     def destroy
+      @rank = Rank.find(params[:id])
+      if @rank.destroy
+        flash[:notice] = "del success!"
+      else
+        flash[:notice] = "del error!"
+      end
+      redirect_to :controller =>"rank",:action=>"index"
     end
   end
 end
