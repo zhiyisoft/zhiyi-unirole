@@ -5,7 +5,7 @@ function get_parent(id){
 	$("select[name=organ\\[parent_id\\]]").html(html)
 	if (result.length > 0){
 	    for( i in result ){
-		html+="<option value="+result[i].id+">"+result[i].name+"</option>"
+		html+="<option value="+result[i]._id+">"+result[i].name+"</option>"
 	    }
 	    $("select[name=organ\\[parent_id\\]]").html(html)
 	}
