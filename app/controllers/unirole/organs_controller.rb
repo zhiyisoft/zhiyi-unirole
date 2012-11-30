@@ -26,9 +26,9 @@ module Unirole
      rank = Rank.find(params[:id])
      Rank.all.each do |list|
         if list.seq !=rank.seq
-          if !list.member_of? rank  
+          if !list.member_of? rank              
             Organ.where(:rank_id =>list.id).each do |idx|
-              @data << idx
+              @data <<{:key => idx.id ,:value => idx.full_name}
             end
           end
         end

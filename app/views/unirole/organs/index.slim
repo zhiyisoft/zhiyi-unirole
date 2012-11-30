@@ -22,6 +22,7 @@ div class="data_list"
     -@organs.each do |list|
       li 
         span =list.name
+        span |
         span =list.rank.name
         =render :partial=>"children",:locals=>{:parent =>list}
 
