@@ -7,5 +7,6 @@ Unirole::Engine.routes.draw do
     end
   end
   resources :rank,:only=>[:index,:create,:destroy,:update]
-
+  resources :membership,:only=>[:index,:create,:destroy,:update]
+  
 end

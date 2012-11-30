@@ -1,0 +1,22 @@
+div class="data_bar"
+  form id="membership_form" action="#{membership_index_path}" method="post" 
+    label for="membership[name]" 身份名称：
+    input id="membership[seq]" name="membership[name]" type="text" value=""
+
+    input type="submit" value="添加" 
+    span id="show_span_for_notice"
+      =flash[:notice]
+div class="data_list"
+  table
+    thead
+      tr
+        th 序号
+        th 身份名称
+        th
+    tbody
+    - @membership.each_with_index do |membership,index|
+      tr id=membership.id
+        td =index+1
+        td 
+          input value=membership.name name="name" type="text" readonly="readonly"
+        td = link_to "删除",membership_path(membership),:confirm=>"您是否要删除此记录?",:method=>:delete  
