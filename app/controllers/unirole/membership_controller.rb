@@ -4,6 +4,12 @@ module Unirole
   class MembershipController < UniroleController
     def index      
       @membership = Membership.all
+
+      respond_to do |format|
+        format.html 
+        format.json {render :json=>@membership}
+      end
+
     end
     
     def create

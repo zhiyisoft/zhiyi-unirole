@@ -1,0 +1,13 @@
+div class="data_bar"
+  h3 角色配置管理
+div class="data_list"
+  p 成都知一软件有限公司
+  ul
+    -@organs.each do |list|
+      li 
+        span =list.name 
+        span |
+        a href="javascript:void(0)" onclick="edit_actor_for_membership()" id="#{list.id}" 添加身份 
+        span id="#edit_actor_for_membership"
+        =render :partial=>"children",:locals=>{:parent =>list}
+

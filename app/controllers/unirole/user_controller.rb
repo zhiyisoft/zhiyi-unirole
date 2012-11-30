@@ -11,6 +11,10 @@ module Unirole
                 {:username =>"test5"},
                 {:username =>"test6"}
               ]
+      respond_to do |format|
+        format.html 
+        format.json {render :json=>@users}
+      end
     end
   end
 end

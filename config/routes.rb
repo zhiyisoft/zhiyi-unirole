@@ -9,4 +9,5 @@ Unirole::Engine.routes.draw do
   resources :rank, :only=> [:index,:create,:destroy,:update]
   resources :membership, :only=> [:index,:create,:destroy,:update]
   resources :user, :only=> [:index]
+  resources :actor, :only=> [:index,:create,:destroy,:update]
 end

@@ -1,0 +1,5 @@
+ul
+  -parent.children.each do |list|
+    li 
+      span =list.name
+      =render :partial=>"children",:locals=>{:parent =>list}              
