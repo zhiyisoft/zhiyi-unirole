@@ -17,19 +17,11 @@ div class="data_bar"
 
     input type="submit" value="添加"
 div class="data_list"
-  table
-    thead
-      tr
-        th 序号
-        th 名称
-        th 上级单位
-        th 等级
-    tbody
-      - @organs.each_with_index do |organ,index|
-        tr
-          td =index+1
-          td =organ.name
-          td 
-            - unless organ.parent.nil?
-              = organ.parent.name              
-          td =organ.rank.name
+  p 成都知一软件有限公司
+  ul
+    -@organs.each do |list|
+      li 
+        span =list.name
+        span =list.rank.name
+        =render :partial=>"children",:locals=>{:parent =>list}
+

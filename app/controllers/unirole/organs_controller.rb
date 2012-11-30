@@ -3,8 +3,7 @@
 module Unirole
   class OrgansController < UniroleController
     def index
-      #@organs = Organ.where(:parent_id=>nil)
-      @organs = Organ.all
+      @organs = Organ.where(:parent_id=>nil)
     end
 
     def create
