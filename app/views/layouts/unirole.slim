@@ -5,8 +5,13 @@
 div class="header"
   h1 用户角色管理
   =link_to "等级管理",rank_index_path()
+  span |
   =link_to "组织机构",organs_path()
+  span |
   =link_to "身份管理",membership_index_path()
+  span |
+  =link_to "用户管理",user_index_path()
+  
 div class="content"
   = yield
 div class="footer"

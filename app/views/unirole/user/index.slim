@@ -1,0 +1,13 @@
+div class="data_list"
+  table
+    thead
+      tr
+        th 序号
+        th 用户名
+    tbody
+    - @users.each_with_index do |user,index|
+      tr 
+        td =index+1
+        td =user[:username]
+
+
