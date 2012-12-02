@@ -28,6 +28,12 @@ module Unirole
     end
     
     def add_user
+      @actor_user = Actor.find(params[:actor_id]).user_ids
+      @users = [
+               {:username =>"test1"},
+                {:username =>"test2"},
+                {:username =>"test3"}
+               ]
       render :layout=>false
     end
 

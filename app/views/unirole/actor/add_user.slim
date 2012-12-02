@@ -1,2 +1,12 @@
 div class="data_list"
-  p user list
+  div 已有用户
+  -if @actor_user.size==0
+    span 暂无用户
+  -else
+    -@actor_user.each do |actor_user|
+      span =actor_user.id
+  div 添加新用户
+  -@users.each do |user|
+    p 
+      =user[:username] 
+      span  添加
