@@ -7,11 +7,11 @@ require "unirole/version"
 Gem::Specification.new do |s|
   s.name        = "unirole"
   s.version     = Unirole::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Unirole."
-  s.description = "TODO: Description of Unirole."
+  s.authors     = ["XieGang"]
+  s.email       = ["xiegang@zhiyisoft.com"]
+  s.homepage    = "http://www.zhiyisoft.com/users/xiegang/projects/unirole"
+  s.summary     = "unirole module of zhiyisoft.com"
+  s.description = "Simple role settings of one organ"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
