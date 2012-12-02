@@ -26,5 +26,10 @@ module Unirole
         format.json {render :json =>@data}
       end
     end
+    
+    def add_user
+      render :layout=>false
+    end
+
   end
 end

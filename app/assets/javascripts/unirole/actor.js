@@ -24,3 +24,13 @@ function edit_actor_for_membership(organ_id){
       $("#"+organ_id+"_edit_actor_for_membership").html(html)
   })
 }
+
+function close_windown(){
+    parent.closeWindown();
+}
+function edit_actor_for_user(actor_id){
+    tipsWindown("jquery 弹出层","url:actor/add_user","400","250","true","","true","")
+//   $.getJSON('user.json',function(){
+	
+  //  })
+}
