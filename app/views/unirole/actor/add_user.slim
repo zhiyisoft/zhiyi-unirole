@@ -1,12 +1,25 @@
+=javascript_include_tag "application"
+javascript:
+  function add_user_for_actor(user,actor_id){
+    $.getJSON("add_user_for_actor",{user:user},function(result){
+      var html=""
+        for( i in result){
+          html+="<p>"+result[i]+"</p>"
+            }
+      $(".user_show").html(html)
+    })
+    }
 div class="data_list"
-  div 已有用户
-  -if @actor_user.size==0
-    span 暂无用户
-  -else
-    -@actor_user.each do |actor_user|
-      span =actor_user.id
-  div 添加新用户
-  -@users.each do |user|
-    p 
-      =user[:username] 
-      span  添加
+  span 已有用户
+  div.user_show 
+    -if @actor_user.user_ids.size==0
+      span 暂无用户
+    -else
+      -@actor_user.user_ids.each do |actor_user|
+        p =actor_user
+  div 
+    span 添加新用户
+    -@users.each do |user|
+      p 
+        =user[:username] 
+        input type="button" value="添加" onclick="add_user_for_actor('#{user[:username]}','#{params[:actor_id]}')"

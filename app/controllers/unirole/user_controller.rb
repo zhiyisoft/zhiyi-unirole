@@ -2,7 +2,7 @@
 
 module Unirole
   class UserController < UniroleController
-    def index      
+    def index 
       @users = [
                 {:username =>"test1"},
                 {:username =>"test2"},
