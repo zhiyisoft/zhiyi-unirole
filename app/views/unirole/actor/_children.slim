@@ -3,13 +3,12 @@ ul
     li 
       span =list.name
       span |
-      -list.actor.each do |actor|
+      -list.actor.each do  |actor|
         br
-        b 
+        b
           =actor.membership.name
         |
-        span 添加成员
-      a href="javascript:void(0)" onclick="edit_actor_for_membership('#{list.id}')"  添加身份
-      span id="#{list.id}_edit_actor_for_membership"	  
-
+        span 管理成员
+      a href="#" onclick="edit_actor_for_membership('#{list.id}')" 添加身份
+      span id="#{list.id}_edit_actor_for_membership"
       =render :partial=>"children",:locals=>{:parent =>list}              

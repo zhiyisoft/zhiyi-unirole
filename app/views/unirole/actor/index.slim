@@ -12,7 +12,7 @@ div class="data_list"
           b 
             =actor.membership.name
           |
-          span 添加成员
+          span 管理成员
         a href="javascript:void(0)" onclick="edit_actor_for_membership('#{list.id}')" 添加身份 
         span id="#{list.id}_edit_actor_for_membership"
         =render :partial=>"children",:locals=>{:parent =>list}
