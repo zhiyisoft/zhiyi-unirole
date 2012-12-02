@@ -12,6 +12,6 @@ Unirole::Engine.routes.draw do
   resources :actor, :only=> [:index,:create,:destroy,:update] do
       get "add_user"
       get "add_user_for_actor"
-
+      get "get_user"
   end
 end
