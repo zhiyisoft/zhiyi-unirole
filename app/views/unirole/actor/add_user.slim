@@ -1,10 +1,13 @@
 =javascript_include_tag "application"
 javascript:
-  function add_user_for_actor(user,actor_id){
-    $.getJSON("add_user_for_actor",{user:user},function(result){
+  function add_user_for_actor(user,actor_id,action){
+    $.getJSON("add_user_for_actor?act="+action,{user:user},function(result){
       var html=""
         for( i in result){
-          html+="<p>"+result[i]+"</p>"
+          html+="<p>"+result[i]
+          html+="<input type='button' value='移除' onclick='add_user_for_actor(\""+result[i]+"\",\""+actor_id+"\",\"remove\")' />"
+
+          html+="</p>"
             }
       $(".user_show").html(html)
     })
@@ -16,10 +19,12 @@ div class="data_list"
       span 暂无用户
     -else
       -@actor_user.user_ids.each do |actor_user|
-        p =actor_user
+        p
+          =actor_user 
+          input type="button" value="移除" onclick="add_user_for_actor('#{actor_user}','#{params[:actor_id]}','remove')"          
   div 
     span 添加新用户
     -@users.each do |user|
       p 
         =user[:username] 
-        input type="button" value="添加" onclick="add_user_for_actor('#{user[:username]}','#{params[:actor_id]}')"
+        input type="button" value="添加" onclick="add_user_for_actor('#{user[:username]}','#{params[:actor_id]}','add')"

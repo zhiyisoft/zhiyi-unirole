@@ -28,8 +28,15 @@ module Unirole
     end
     
     def add_user_for_actor
-      @user_ids = get_user 
-      @user_ids.user_ids << params[:user]
+      @user_ids = Actor.find(params[:actor_id])
+      if params[:act]=="add"
+        user=[]        
+        user<< params[:user]
+        @user_ids.user_ids = @user_ids.user_ids | user
+        
+      else
+        @user_ids.user_ids.delete(params[:user])
+      end
       @user_ids.save
       render :json =>@user_ids.user_ids
     end
@@ -41,7 +48,7 @@ module Unirole
       end
     end
     def add_user
-      @actro_user = get_user
+      @actor_user = Actor.find(params[:actor_id])
       @users = [
                {:username =>"test1"},
                 {:username =>"test2"},
