@@ -2,5 +2,6 @@
 
 module Unirole
   class UniroleController < ActionController::Base
+    layout "application"
   end
 end
