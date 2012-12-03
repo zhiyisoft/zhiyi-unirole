@@ -1,7 +1,7 @@
 #require_bdependency "unirole/unirole_controller"
 
 module Unirole
-  class MembershipController < UniroleController
+  class MembershipsController < UniroleController
     def index      
       @membership = Membership.all
       

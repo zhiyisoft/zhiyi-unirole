@@ -1,7 +1,7 @@
 #require_bdependency "unirole/unirole_controller"
 
 module Unirole
-  class UserController < UniroleController
+  class UsersController < UniroleController
     def index 
       @users = [
                 {:username =>"test1"},

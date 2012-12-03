@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-#require_dependency "unirole/unirole_controller"
 
 module Unirole
-  class ActorController < UniroleController
+  class ActorsController < UniroleController
 
     def index
       @organs = Organ.where(:parent_id=>nil)

@@ -1,7 +1,7 @@
 #require_bdependency "unirole/unirole_controller"
 
 module Unirole
-  class RankController < UniroleController
+  class RanksController < UniroleController
     def index      
       @rank = Rank.all
       render :layout => (not request.xhr?)
