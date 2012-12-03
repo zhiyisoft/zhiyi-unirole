@@ -4,9 +4,9 @@ module Unirole
   class MembershipController < UniroleController
     def index      
       @membership = Membership.all
-
+      
       respond_to do |format|
-        format.html 
+        format.html {render :layout => (not request.xhr?)}
         format.json {render :json=>@membership}
       end
 

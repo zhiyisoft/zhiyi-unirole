@@ -4,6 +4,7 @@ module Unirole
   class RankController < UniroleController
     def index      
       @rank = Rank.all
+      render :layout => (not request.xhr?)
     end
     
     def create

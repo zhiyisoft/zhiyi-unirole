@@ -3,7 +3,8 @@
 module Unirole
   class DashboardController < UniroleController
     def index
-      puts "dashboard index"
+      p "dashboard controller"
+      render :layout => (not request.xhr?)
     end
   end
 end

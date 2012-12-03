@@ -6,6 +6,7 @@ module Unirole
 
     def index
       @organs = Organ.where(:parent_id=>nil)
+      render :layout => (not request.xhr?)
     end
 
     def create
