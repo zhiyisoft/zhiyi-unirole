@@ -33,8 +33,7 @@ module Unirole
       if params[:act]=="add"
         user=[]        
         user<< params[:user]
-        @user_ids.user_ids = @user_ids.user_ids | user
-        
+        @user_ids.user_ids = @user_ids.user_ids | user        
       else
         @user_ids.user_ids.delete(params[:user])
       end

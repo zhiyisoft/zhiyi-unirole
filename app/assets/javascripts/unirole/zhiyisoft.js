@@ -1,5 +1,5 @@
 $(function(){
-    $(".data_list input").bind("change",function(){
+    $("section input").bind("change",function(){
 
 	ajax_update($(this))
 
