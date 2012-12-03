@@ -37,7 +37,7 @@ module Unirole
       else
         @user_ids.user_ids.delete(params[:user])
       end
-      @user_ids.user_ids.sort
+      @user_ids.user_ids = @user_ids.user_ids.sort
       @user_ids.save
       render :json =>@user_ids.user_ids.sort
     end
