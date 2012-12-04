@@ -1,2 +1,15 @@
-document.write("<script language='javascript' src='zhiyisoft.js'></script>");
-document.write("<script language='javascript' src='tipswindown.js'></script>");
+$(function(){
+    $("section input").bind("change",function(){
+	ajax_update($(this))
+    }).bind("click",function(){
+	if ($(this).attr("readonly") == "readonly")
+	{
+	    $(this).removeAttr("readonly")
+	}
+
+    }).mouseout(function(){
+	$(this).attr("readonly","readonly")
+    })
+})
+function AjaxStart(obj){}
+function AjaxEnd(obj){}
