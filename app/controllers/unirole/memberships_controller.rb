@@ -12,7 +12,7 @@ module Unirole
 
     end
     
-    def create
+    def create      
       @membership = Membership.new(params[:membership])
       if @membership.save
         flash[:notice] = "save success!"
