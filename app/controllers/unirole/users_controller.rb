@@ -12,7 +12,7 @@ module Unirole
                 {:username =>"test6"}
               ]
       respond_to do |format|
-        format.html 
+        format.html { render :layout => (not request.xhr?)}
         format.json {render :json=>@users}
       end
     end
