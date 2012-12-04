@@ -26,7 +26,6 @@ module Unirole
         render :json =>'{"status":500,"desc":"error"}'
       end
     end
-
     def destroy
       @rank = Rank.find(params[:id])
       if @rank.destroy
