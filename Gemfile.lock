@@ -138,6 +138,7 @@ DEPENDENCIES
   database_cleaner
   factory_girl_rails
   haml
+  i18n
   jquery-rails
   mongoid
   rspec-rails
