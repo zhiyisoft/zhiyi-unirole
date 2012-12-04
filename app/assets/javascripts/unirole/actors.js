@@ -29,5 +29,5 @@ function close_windown(){
     parent.closeWindown();
 }
 function edit_actor_for_user(actor_id,actor){    
-    tipsWindown(actor,"iframe:actor/"+actor_id+"/add_user","400","250","true","","true","")
+    tipsWindown(actor,"iframe:actors/"+actor_id+"/add_user","400","250","true","","true","")
 }
