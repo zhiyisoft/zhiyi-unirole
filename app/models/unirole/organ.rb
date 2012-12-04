@@ -8,7 +8,7 @@ module Unirole
     belongs_to :rank, :class_name => "Unirole::Rank"
     belongs_to :parent, :class_name => "Unirole::Organ", :foreign_key => "parent_id"
     
-    has_many :actor, :class_name => "Unirole::Actor"
+    has_many :actors, :class_name => "Unirole::Actor"
 
     validate :validate_on_parent
 
