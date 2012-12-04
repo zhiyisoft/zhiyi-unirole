@@ -1,5 +1,5 @@
 $(function(){
-    $("section input").bind("change",function(){
+    $("section table input").bind("change",function(){
 	ajax_update($(this))
     }).bind("click",function(){
 	if ($(this).attr("readonly") == "readonly")
