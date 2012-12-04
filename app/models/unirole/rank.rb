@@ -8,6 +8,8 @@ module Unirole
     field :name, :type => String
     validates :name, :uniqueness => true, :presence => true
 
+    field :normal, :type => Boolean, :default => true
+
     has_many :organs, :class_name => "Unirole::Organ"
 
     def member_of? other 
