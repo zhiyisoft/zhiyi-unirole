@@ -2,18 +2,35 @@ header
   img.icon src='/assets/unirole/unirole_index.png'
   h2=t('unirole.actor')
 section
-  p 成都知一软件有限公司
   ul
+    -
     -@organs.each do |list|
-      li 
+      li
         span =list.name 
+        - membership =[]
+        -list.actors.each do |actor|
+          - membership << actor.membership
+
+        - membership.sort.each do |membership|
+          span 
+            b
+              =membership.name
+          - Unirole::Actor.where(:membership_id=>membership.id,:organ_id=>list.id).each do |idx|
+            -if idx.user_ids.size >0 
+              -idx.user_ids.each do |user|
+                - p "user:"
+                - p user
+            -else
+              span 暂无用户
+
+        
         span |
         -list.actors.each do |actor|
           br
           b 
             =actor.membership.name
           |
-          span onclick="edit_actor_for_user('#{actor.id}','#{actor.to_s}')" 管理成员            
+          a href="javascript:void(0)" onclick="edit_actor_for_user('#{actor.id}','#{actor.to_s}')" 管理用户            
         a href="javascript:void(0)" onclick="edit_actor_for_membership('#{list.id}')" 添加身份 
         span id="#{list.id}_edit_actor_for_membership"
         =render :partial=>"children",:locals=>{:parent =>list}
