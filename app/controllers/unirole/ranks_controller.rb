@@ -11,10 +11,10 @@ module Unirole
       @rank = Rank.new(params[:rank])
       if @rank.save
         flash[:notice] = "save success!"
-        redirect_to  :controller =>"rank",:action=>"index"
+        redirect_to  :controller =>"ranks",:action=>"index"
       else
         flash[:notice] = "save error!"
-        redirect_to :controller =>"rank",:action=>"index"        
+        redirect_to :controller =>"ranks",:action=>"index"        
       end
     end  
     
@@ -33,7 +33,7 @@ module Unirole
       else
         flash[:notice] = "del error!"
       end
-      redirect_to :controller =>"rank",:action=>"index"
+      redirect_to :controller =>"ranks",:action=>"index"
     end
   end
 end

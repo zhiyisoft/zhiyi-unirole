@@ -16,10 +16,10 @@ module Unirole
       @membership = Membership.new(params[:membership])
       if @membership.save
         flash[:notice] = "save success!"
-        redirect_to  :controller =>"membership",:action=>"index"
+        redirect_to  :controller =>"memberships",:action=>"index"
       else
         flash[:notice] = "save error!"
-        redirect_to :controller =>"membership",:action=>"index"        
+        redirect_to :controller =>"memberships",:action=>"index"        
       end
     end  
     
@@ -39,7 +39,7 @@ module Unirole
       else
         flash[:notice] = "del error!"
       end
-      redirect_to :controller =>"membership",:action=>"index"
+      redirect_to :controller =>"memberships",:action=>"index"
     end
   end
 end
