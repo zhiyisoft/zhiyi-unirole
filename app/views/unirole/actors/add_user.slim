@@ -19,8 +19,9 @@ div class="data_list"
       span 暂无用户
     -else
       -@actor_user.user_ids.each do |actor_user|
-        p
-          =actor_user.users
+        p  
+          =Unirole::User.find("#{actor_user}").name
+          =Unirole::User.find("#{actor_user}").login
           input type="button" value="移除" onclick="add_user_for_actor('#{actor_user}','#{params[:actor_id]}','remove')"          
   div 
     span 添加新用户
