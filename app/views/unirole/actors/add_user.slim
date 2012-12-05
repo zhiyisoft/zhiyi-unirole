@@ -20,7 +20,7 @@ div class="data_list"
     -else
       -@actor_user.user_ids.each do |actor_user|
         p
-          =actor_user 
+          =actor_user.users
           input type="button" value="移除" onclick="add_user_for_actor('#{actor_user}','#{params[:actor_id]}','remove')"          
   div 
     span 添加新用户

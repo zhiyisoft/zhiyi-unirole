@@ -17,7 +17,7 @@
  //simpleWindown("例子","text:例子","500","400","true","3000","0","exa")
  //------------------------------------------------------------------------
 var showWindown = true;
-var templateSrc = "http://www.7daysinn.cn"; //设置loading.gif路径
+var templateSrc = "/assets/unirole"; //设置loading.gif路径
 function tipsWindown(title,content,width,height,drag,time,showbg,cssName,backcall) {
 	$("#windown-box").remove(); //请除内容
 	var width = width>= 950?this.width=950:this.width=width;	    //设置最大窗口宽度
@@ -43,7 +43,7 @@ function tipsWindown(title,content,width,height,drag,time,showbg,cssName,backcal
 		break;
 		case "img":
 		$("#windown-content").ajaxStart(function() {
-			$(this).html("<img src='"+templateSrc+"/images/loading.gif' class='loading' />");
+			$(this).html("<img src='"+templateSrc+"/loading.gif' class='loading' />");
 		});
 		$.ajax({
 			error:function(){
@@ -57,7 +57,7 @@ function tipsWindown(title,content,width,height,drag,time,showbg,cssName,backcal
 		case "url":
 		var content_array=content.split("?");
 		$("#windown-content").ajaxStart(function(){
-			$(this).html("<img src='"+templateSrc+"/images/loading.gif' class='loading' />");
+			$(this).html("<img src='"+templateSrc+"/loading.gif' class='loading' />");
 		});
 		$.ajax({
 			type:content_array[0],
@@ -75,7 +75,7 @@ function tipsWindown(title,content,width,height,drag,time,showbg,cssName,backcal
 		break;
 		case "iframe":
 		$("#windown-content").ajaxStart(function(){
-			$(this).html("<img src='"+templateSrc+"/images/loading.gif' class='loading' />");
+			$(this).html("<img src='"+templateSrc+"/loading.gif' class='loading' />");
 		});
 		$.ajax({
 			error:function(){
