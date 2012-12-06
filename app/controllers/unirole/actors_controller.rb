@@ -37,8 +37,9 @@ module Unirole
         @user_ids.user_ids.delete(params[:user])
       end
       @user_ids.user_ids = @user_ids.user_ids.sort
-      @user_ids.save
-      render :json =>@user_ids.user_ids.sort
+      @user_ids.save      
+      p Actor.find(params[:actor_id])
+      render :json =>Actor.find(params[:actor_id]).user_ids.sort
     end
     def get_user
       @actor_user = Actor.find(params[:actor_id])
@@ -49,11 +50,7 @@ module Unirole
     end
     def add_user
       @actor_user = Actor.find(params[:actor_id])
-      @users = [
-               {:username =>"test1"},
-                {:username =>"test2"},
-                {:username =>"test3"}
-               ]
+      @users = User.all
       render :layout=>false
     end
 
