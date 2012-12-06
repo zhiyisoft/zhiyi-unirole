@@ -8,7 +8,7 @@ module Unirole
     belongs_to :organ, :class_name => "Unirole::Organ"
 
     has_and_belongs_to_many :users, :class_name => "Unirole::User"
-
+    index({ membership_id: 1, organ_id: 1},{unique: true})
     def to_s
       organ.full_name + ":" + membership.name
     end

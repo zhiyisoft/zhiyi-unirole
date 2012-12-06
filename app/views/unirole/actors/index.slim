@@ -3,7 +3,6 @@ header
   h2=t('unirole.actor')
 section
   ul
-    -
     -@organs.each do |list|
       li
         span =list.name 
@@ -29,5 +28,4 @@ section
 
 
         
-        /!=render :partial=>"children",:locals=>{:parent =>list}
-
+      =render :partial=>"children",:locals=>{:parent =>list}
