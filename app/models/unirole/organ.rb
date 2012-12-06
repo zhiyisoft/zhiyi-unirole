@@ -35,7 +35,7 @@ module Unirole
     def self.find_by_full_name leader, names
       chain = if names.instance_of?(Array) then names else names.split('/') end
       raise "Name of Organ can't be null." if chain.size == 0
-      me = Organ.find_by(:name => chain.first, :parent => leader)
+      me = Organ.where(:name => chain.first, :parent_id => (leader.nil? ? nil : leader.id)).first
 
       raise "Organ is not exist!" unless me
       return me if chain.size == 1

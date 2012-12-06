@@ -5,7 +5,7 @@ FactoryGirl.define do
     factory k, :class => Unirole::Organ do
       name v
       before(:create) do |f|
-        f.rank = Unirole::Rank.find_by(:name => '处级')
+        f.rank = Unirole::Rank.where(:name => '处级').first
       end
     end 
   end
@@ -16,8 +16,8 @@ FactoryGirl.define do
     factory k,:class => Unirole::Organ do
       name v
       before(:create) do |f|
-        f.rank = Unirole::Rank.find_by(:name => '科级')
-        f.parent = Unirole::Organ.find_by(:name => chu)
+        f.rank = Unirole::Rank.where(:name => '科级').first
+        f.parent = Unirole::Organ.where(:name => chu).first
       end
     end
   end
@@ -26,8 +26,8 @@ FactoryGirl.define do
     factory k,:class => Unirole::Organ do
       name v
       before(:create) do |f|
-        f.rank = Unirole::Rank.find_by(:name => '股级')
-        f.parent = Unirole::Organ.find_by(:name => '开发科', :parent => '蜀南气矿'.to_organ)
+        f.rank = Unirole::Rank.where(:name => '股级').first
+        f.parent = Unirole::Organ.where(:name => '开发科', :parent_id => '蜀南气矿'.to_organ.id).first
       end
     end
   end
