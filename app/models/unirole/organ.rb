@@ -28,6 +28,10 @@ module Unirole
       parent.full_name + "/" + name
     end
 
+    def users
+      actors.map {|x| x.users}.flatten.uniq
+    end
+
     def self.find_by_full_name leader, names
       chain = if names.instance_of?(Array) then names else names.split('/') end
       raise "Name of Organ can't be null." if chain.size == 0
