@@ -28,25 +28,3 @@ function save_membership(obj){
 function edit_user(actor_id,actor){
     tipsWindown(actor,"iframe:actors/"+actor_id+"/add_user","400","250","true","","true","")
 }
-/*
-function edit_actor_for_membership(organ_id){
-    $.getJSON("memberships.json",function(result){
-    var html=""
-      if (result.length>0){	   
-	  for( i in result){
-	      html +="<input type='checkbox' name='membership' value='"+result[i]._id+"' />"+result[i].name;
-	  }
-	  
-      }else{
-	  html="获取身份列表失败，请重试！"
-      }
-      $("#"+organ_id+"_edit_actor_for_membership").html(html)
-  })
-}
-
-
-
-function show_windown(uri,title){
-    tipsWindown(title,uri,"400","250","true","","true","")
-}
-*/
