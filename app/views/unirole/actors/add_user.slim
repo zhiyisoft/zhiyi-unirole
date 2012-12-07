@@ -3,11 +3,11 @@ javascript:
   $(function(){
     $(".user_show").load("user_list")
   })
-  function add_user(user,actor_id,action){
+  function user_mamager(user,actor_id,action){
     $.getJSON("add_user_for_actor?act="+action,{user:user},function(result){
       $(".user_show").load("/unirole/actors/"+actor_id+"/user_list")})
     }
-    
+
 div class="data_list"
   span 已有用户:
   div class="user_show"
@@ -19,4 +19,4 @@ div class="data_list"
       p 
         =user.name
         =user.login
-        input type="button" value="添加" onclick="add_user('#{user.id}','#{params[:actor_id]}','add')"
+        input type="button" value="添加" onclick="user_mamager('#{user.id}','#{params[:actor_id]}','add')"

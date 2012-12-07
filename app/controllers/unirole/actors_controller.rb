@@ -52,12 +52,13 @@ module Unirole
     def add_user_for_actor
       @user_ids = Actor.find(params[:actor_id])      
       if params[:act]=="add"                
-        @user_ids.user_ids << params[:user]
+        @user_ids.user_ids << params[:user] unless @user_ids.user_ids.include?(params[:user])
         
       else
-        @user_ids.user_ids.delete(params[:user])
+        p @user_ids.users.delete(params[:user])
       end      
-      @user_ids.save      
+      
+      @user_ids.save
       render :json =>Actor.find(params[:actor_id])      
     end
 
