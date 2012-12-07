@@ -4,7 +4,7 @@ javascript:
     $.getJSON("add_user_for_actor?act="+action,{user:user},function(result){
       var html=""
         for( i in result){
-          html+="<p>"+result[i].
+          html+="<p>"+result[i]
           html+="<input type='button' value='移除' onclick='add_user_for_actor(\""+result[i]+"\",\""+actor_id+"\",\"remove\")' />"
 
           html+="</p>"

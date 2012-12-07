@@ -6,10 +6,9 @@ section
     -@organs.each do |list|
       li
         span =list.name 
-        span |
-        a href="javascript:void(0)" onclick="edit_actor_for_membership('#{list.id}')" 添加身份 
-        span id="#{list.id}_edit_actor_for_membership"
-        br
+        a href="javascript:void(0)" onclick="add_membership('#{list.id}')" 身份管理
+        span id="#{list.id}_edit_membership"
+        hr 
         - membership =[]
         -list.actors.each do |actor|
           - membership << actor.membership
@@ -23,9 +22,10 @@ section
                   =user
               -else
                 span 暂无用户
-              span onclick="edit_actor_for_user('#{idx.id}','#{idx.to_s}')" 管理成员
+              span onclick="edit_user('#{idx.id}','#{idx.to_s}')" 管理成员
+              =link_to "删除",actor_path(idx),:confirm=>"您是否要删除此记录?",:method=>:delete
             hr
 
 
         
-      =render :partial=>"children",:locals=>{:parent =>list}
+      /! =render :partial=>"children",:locals=>{:parent =>list}
