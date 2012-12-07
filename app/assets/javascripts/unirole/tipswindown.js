@@ -143,6 +143,7 @@ function tipsWindown(title,content,width,height,drag,time,showbg,cssName,backcal
 			showselect('t123_')
 			$("#windownbg").remove();
 			$("#windown-box").fadeOut("slow",function(){$(this).remove();});
+         location.reload()
 		});
 	}else { 
 		setTimeout(closeWindown,time);

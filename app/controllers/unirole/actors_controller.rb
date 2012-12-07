@@ -38,21 +38,30 @@ module Unirole
     end
 
 #----用户管理---------------------------
-    
-    def add_user_for_actor
+    def add_user
+      @actor_user = Actor.find(params[:actor_id])
+      @users = User.all
+      render :layout=>false
+    end
+
+    def user_list
       @user_ids = Actor.find(params[:actor_id])
-      if params[:act]=="add"
-        user=[]
-        user<< params[:user]
-        @user_ids.user_ids = @user_ids.user_ids | user
+      render :layout=>false
+    end
+
+    def add_user_for_actor
+      @user_ids = Actor.find(params[:actor_id])      
+      if params[:act]=="add"                
+        @user_ids.user_ids << params[:user]
+        
       else
         @user_ids.user_ids.delete(params[:user])
-      end
-      @user_ids.user_ids = @user_ids.user_ids.sort
-      @user_ids.save
-      
-      render :json =>Actor.find(params[:actor_id]).user_ids.sort
+      end      
+      @user_ids.save      
+      render :json =>Actor.find(params[:actor_id])      
     end
+
+=begin
     def get_user
       @actor_user = Actor.find(params[:actor_id])
       respond_to do |format|
@@ -60,11 +69,8 @@ module Unirole
         format.json{render :json => @actor_user.user_ids}
       end
     end
-    def add_user
-      @actor_user = Actor.find(params[:actor_id])
-      @users = User.all
-      render :layout=>false
-    end
+=end
+
 
 
   end

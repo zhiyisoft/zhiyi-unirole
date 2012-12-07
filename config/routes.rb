@@ -10,6 +10,7 @@ Unirole::Engine.routes.draw do
   resources :memberships, :only=> [:index,:create,:destroy,:update]
   resources :users, :only=> [:index,:create,:destroy,:update]
   resources :actors, :only=> [:index,:create,:destroy,:update] do
+      get "user_list"
       get "add_user"
       get "add_user_for_actor"
       get "get_user"

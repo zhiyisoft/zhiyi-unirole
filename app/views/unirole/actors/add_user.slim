@@ -1,32 +1,22 @@
 =javascript_include_tag "application"
 javascript:
-  function add_user_for_actor(user,actor_id,action){
+  $(function(){
+    $(".user_show").load("user_list")
+  })
+  function add_user(user,actor_id,action){
     $.getJSON("add_user_for_actor?act="+action,{user:user},function(result){
-      var html=""
-        for( i in result){
-          html+="<p>"+result[i]
-          html+="<input type='button' value='移除' onclick='add_user_for_actor(\""+result[i]+"\",\""+actor_id+"\",\"remove\")' />"
-
-          html+="</p>"
-            }
-      $(".user_show").html(html)
-    })
+      $(".user_show").load("/unirole/actors/"+actor_id+"/user_list")})
     }
+    
 div class="data_list"
-  span 已有用户
-  div.user_show 
-    -if @actor_user.user_ids.size==0
-      span 暂无用户
-    -else
-      -@actor_user.user_ids.each do |actor_user|
-        p  
-          =Unirole::User.find("#{actor_user}").name
-          =Unirole::User.find("#{actor_user}").login
-          input type="button" value="移除" onclick="add_user_for_actor('#{actor_user}','#{params[:actor_id]}','remove')"          
-  div 
+  span 已有用户:
+  div class="user_show"
+    
+  hr
+  div class="user_add"
     span 添加新用户
     -@users.each do |user|
       p 
         =user.name
         =user.login
-        input type="button" value="添加" onclick="add_user_for_actor('#{user.id}','#{params[:actor_id]}','add')"
+        input type="button" value="添加" onclick="add_user('#{user.id}','#{params[:actor_id]}','add')"

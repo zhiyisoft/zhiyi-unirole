@@ -25,6 +25,9 @@ function save_membership(obj){
 
 //---用户管理-----------------------------
 
+function edit_user(actor_id,actor){
+    tipsWindown(actor,"iframe:actors/"+actor_id+"/add_user","400","250","true","","true","")
+}
 /*
 function edit_actor_for_membership(organ_id){
     $.getJSON("memberships.json",function(result){
@@ -41,12 +44,7 @@ function edit_actor_for_membership(organ_id){
   })
 }
 
-function close_windown(){
-    parent.closeWindown();
-}
-function edit_actor_for_user(actor_id,actor){    
-    tipsWindown(actor,"iframe:actors/"+actor_id+"/add_user","400","250","true","","true","")
-}
+
 
 function show_windown(uri,title){
     tipsWindown(title,uri,"400","250","true","","true","")
