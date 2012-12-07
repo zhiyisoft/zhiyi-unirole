@@ -146,7 +146,7 @@ DEPENDENCIES
   haml
   i18n
   jquery-rails
-  mongoid
+  mongoid (= 2.5.1)
   rspec-rails
   shoulda-matchers
   slim

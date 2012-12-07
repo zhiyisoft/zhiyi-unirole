@@ -9,7 +9,7 @@ gemspec
 gem "jquery-rails"
 gem "slim"
 gem "haml"
-gem "mongoid"
+gem "mongoid",'2.5.1'
 gem "thin"
 gem "i18n"
 
