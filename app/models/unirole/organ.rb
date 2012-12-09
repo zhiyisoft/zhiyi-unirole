@@ -37,7 +37,7 @@ module Unirole
       raise "Name of Organ can't be null." if chain.size == 0
       me = Organ.where(:name => chain.first, :parent_id => (leader.nil? ? nil : leader.id)).first
 
-      raise "Organ is not exist!" unless me
+      raise "Organ #{chain.first} is not exist!" unless me
       return me if chain.size == 1
       return Organ.find_by_full_name(me, chain.drop(1))
     end
