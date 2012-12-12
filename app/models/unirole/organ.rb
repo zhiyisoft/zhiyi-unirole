@@ -7,6 +7,7 @@ module Unirole
 
     belongs_to :rank, :class_name => "Unirole::Rank"
     belongs_to :parent, :class_name => "Unirole::Organ", :foreign_key => "parent_id"
+    has_many :children,:class_name => "Unirole::Organ",:foreign_key => "parent_id"
     
     has_many :actors, :class_name => "Unirole::Actor"
 
@@ -17,10 +18,6 @@ module Unirole
       unless rank.member_of?(parent.rank)
         raise "Parent Error"
       end
-    end
-
-    def children
-      Organ.where(:parent_id => _id).inject([])  {|s,x| s << x}
     end
 
     def full_name
