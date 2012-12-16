@@ -10,6 +10,8 @@ module Unirole
 
     has_and_belongs_to_many :users, :class_name => "Unirole::User"
 
+    cache
+
     def to_s
       organ.full_name + ":" + membership.name
     end

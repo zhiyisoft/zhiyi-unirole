@@ -11,6 +11,7 @@ module Unirole
     field :normal, :type => Boolean, :default => true
 
     has_many :organs, :class_name => "Unirole::Organ"
+    cache
 
     def member_of? other 
       seq > other.seq

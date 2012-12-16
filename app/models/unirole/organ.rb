@@ -12,6 +12,8 @@ module Unirole
 
     validate :validate_on_parent
 
+    cache
+
     def validate_on_parent
       return unless parent
       unless rank.member_of?(parent.rank)
