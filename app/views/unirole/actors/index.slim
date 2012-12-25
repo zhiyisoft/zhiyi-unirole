@@ -1,6 +1,5 @@
 header
-  img.icon src='/assets/unirole/unirole_index.png'
-  h2=t('unirole.actor')
+   = render "home/label",:title =>t('unirole.actor')
 section
   ul.role_info
     -@organs.each do |list|
