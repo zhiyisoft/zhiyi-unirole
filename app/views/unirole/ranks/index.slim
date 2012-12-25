@@ -1,30 +1,34 @@
 header
-  img.icon src='/assets/unirole/unirole_index.png'
-  h2=t('unirole.rank')
+  = render "home/label",:title => t('unirole.rank')
 section
   div class="data_bar"
-    form id="rank_form" action="#{ranks_path}" method="post" 
-      label for="rank[seq]" 等级标示：
-      input id="rank[seq]" name="rank[seq]" type="text" value=""
-      label for="rank[name]" 等级名称：
-      input id="rank[name]" name="rank[name]" type="text" value=""
-      input type="submit" value="添加" 
-      span id="show_span_for_notice"
-    =flash[:notice]
+    form id="rank_form" action="#{ranks_path}" method="post"
+      .padding-top
+        label for="rank[seq]" 等级标示：
+        input.text_input id="rank[seq]" name="rank[seq]" type="text" value=""
+      .padding-top
+        label for="rank[name]" 等级名称：
+        input.text_input id="rank[name]" name="rank[name]" type="text" value=""
+      .error
+        =flash[:notice]
+      .padding-top
+        input.btn_save type="submit" value="添加" 
+        span id="show_span_for_notice"
+    
 
-  table.list
+  table.home_table
     thead
       tr
         th 序号
         th 等级标示
         th 等级名称
-        th
+        th 操作
     tbody
       - @rank.each_with_index do |rank,index|
         tr id=rank.id
           td =index+1
           td 
-            input value=rank.seq name="seq" type="text" readonly="readonly"
+            input.text_input value=rank.seq name="seq" type="text" readonly="readonly"
           td 
-            input value=rank.name name="name" type="text" readonly="readonly"
+            input.text_input value=rank.name name="name" type="text" readonly="readonly"
           td = link_to "删除",rank_path(rank),:confirm=>"您是否要删除此记录?",:method=>:delete  

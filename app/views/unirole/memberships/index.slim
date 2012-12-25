@@ -1,27 +1,28 @@
 header
-  img.icon src='/assets/unirole/unirole_index.png'
-  h2= t('unirole.membership')
+  = render "home/label",:title => t('unirole.membership')
 
 section
   div class="data_bar"
     form id="membership_form" action="#{memberships_path}" method="post" 
       label for="membership[name]" 身份名称：
-      input id="membership[seq]" name="membership[name]" type="text" value=""
+      input.text_input id="membership[seq]" name="membership[name]" type="text" value=""
+      .error
+        =flash[:notice]
+      .padding-top
+        input.btn_save type="submit" value="添加" 
+        span id="show_span_for_notice"
+    
 
-      input type="submit" value="添加" 
-      span id="show_span_for_notice"
-    =flash[:notice]
-
-  table.list
+  table.home_table
     thead
       tr
         th 序号
         th 身份名称
-        th
+        th 操作
     tbody
-    - @membership.each_with_index do |membership,index|
-      tr id=membership.id
-        td =index+1
-        td 
-          input value=membership.name name="name" type="text" readonly="readonly"
-        td = link_to "删除",membership_path(membership),:confirm=>"您是否要删除此记录?",:method=>:delete  
+      - @membership.each_with_index do |membership,index|
+        tr id=membership.id
+          td =index+1
+          td 
+            input.text_input value=membership.name name="name" type="text" readonly="readonly"
+          td = link_to "删除",membership_path(membership),:confirm=>"您是否要删除此记录?",:method=>:delete  

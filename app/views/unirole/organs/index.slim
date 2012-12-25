@@ -1,26 +1,25 @@
 header
-  img.icon src='/assets/unirole/unirole_index.png'
-  h2=t('unirole.organ') 
+  = render "home/label",:title => t('unirole.organ') 
 section
   div.data_bar
     form id="organs_form" action="#{organs_path}" method="post"
-      div
+      .padding-top
         label for="organ[rank_id]" 等级
         select name="organ[rank_id]" onchange="get_parent($(this).val())"
           option value="" 请选择等级
           -Unirole::Rank.all.each_with_index do |list|
             option value="#{list.id}" =list.name
         span 必选项
-      div
+      .padding-top
         label for="organ[parent_id]" 上级单位
         select name="organ[parent_id]"
           option value="" 无
         span 可选项
-      div
-        label for="organ[name]" 名称
-        input id="organ_name" name="organ[name]" type="text" value=""
+      .padding-top
+        label for="organ[name]" 名称：
+        input.text_input id="organ_name" name="organ[name]" type="text" value=""
         span 必选项
-      input type="submit" value="添加"
+      input.btn_save type="submit" value="添加"
 div class="data_list"
   ul
     -@organs.each do |list|
