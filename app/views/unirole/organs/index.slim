@@ -9,16 +9,16 @@ section
           option value="" 请选择等级
           -Unirole::Rank.all.each_with_index do |list|
             option value="#{list.id}" =list.name
-        span.notice_span 必选项
+        span 必选项
       .padding-top
         label for="organ[parent_id]" 上级单位
         select name="organ[parent_id]"
           option value="" 无
-        span.notice_span 可选项
+        span 可选项
       .padding-top
         label for="organ[name]" 名称：
         input.text_input id="organ_name" name="organ[name]" type="text" value=""
-        span.notice_span 必选项
+        span. 必选项
       input.btn_save type="submit" value="添加"
 div class="data_list"
   ul
