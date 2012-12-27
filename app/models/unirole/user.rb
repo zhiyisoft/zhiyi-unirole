@@ -14,5 +14,9 @@ module Unirole
     def organs
       actors.where(membership_id: Unirole::Membership.default.id).map {|x| x.organ}.uniq
     end
+
+    def member_of? organ
+      organs.map {|x| x.id}.include?(organ.id)
+    end
   end
 end
