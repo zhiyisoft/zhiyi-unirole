@@ -20,5 +20,5 @@ ul
               span 暂无用户
             a href="javascript:void(0)" onclick="edit_user('#{idx.id}','#{idx.to_s}')" 管理成员
             =link_to "删除身份",actor_path(idx),:confirm=>"您是否要删除此记录?",:method=>:delete
-          hr
+          .role_line
       =render :partial=>"children",:locals=>{:parent =>list}

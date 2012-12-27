@@ -28,7 +28,7 @@ section
         tr id=rank.id
           td =index+1
           td 
-            =rank.seq name="seq" type="text" readonly="readonly"
+            input.text_input value=rank.seq name="seq" type="text" readonly="readonly"
           td 
-            =rank.name name="name" type="text" readonly="readonly"
+            input.text_input value=rank.name name="name" type="text" readonly="readonly"
           td = link_to "删除",rank_path(rank),:confirm=>"您是否要删除此记录?",:method=>:delete  
