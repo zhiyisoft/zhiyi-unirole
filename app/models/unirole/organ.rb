@@ -10,9 +10,7 @@ module Unirole
     has_many :children,:class_name => "Unirole::Organ",:foreign_key => "parent_id"
     
     has_many :actors, :class_name => "Unirole::Actor"
-
     validate :validate_on_parent
-
     cache
 
     def validate_on_parent
@@ -28,7 +26,7 @@ module Unirole
     end
 
     def users
-      actors.map {|x| x.users}.flatten.uniq
+      actors.where(membership_id: Membership.default.id).map {|x| x.users}.flatten.uniq
     end
 
     def self.find_by_full_name leader, names
