@@ -7,7 +7,7 @@ module Unirole
 
     belongs_to :rank, :class_name => "Unirole::Rank"
     belongs_to :parent, :class_name => "Unirole::Organ", :foreign_key => "parent_id"
-    has_many :children,:class_name => "Unirole::Organ",:foreign_key => "parent_id"
+    has_many :children,:class_name => "Unirole::Organ",:foreign_key => "children_id"
     
     has_many :actors, :class_name => "Unirole::Actor"
     validate :validate_on_parent
@@ -28,6 +28,11 @@ module Unirole
     def users
       actors.where(membership_id: Membership.default.id).map {|x| x.users}.flatten.uniq
     end
+    
+    def self.departments
+      excludes(parent_id: nil)
+    end 
+
 
     def self.find_by_full_name leader, names
       chain = if names.instance_of?(Array) then names else names.split('/') end
