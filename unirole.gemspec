@@ -5,7 +5,7 @@ require "unirole/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "zhiyi-unirole"
+  s.name        = "unirole"
   s.version     = Unirole::VERSION
   s.authors     = ["XieGang"]
   s.email       = ["xiegang@zhiyisoft.com"]
