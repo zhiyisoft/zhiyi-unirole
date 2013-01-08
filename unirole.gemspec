@@ -5,7 +5,7 @@ require "unirole/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "unirole"
+  s.name        = "zhiyi-unirole"
   s.version     = Unirole::VERSION
   s.authors     = ["XieGang"]
   s.email       = ["xiegang@zhiyisoft.com"]
@@ -15,8 +15,8 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib,public}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  s.add_dependency "rails", "~> 3.2.9"
-  s.add_dependency "mongoid", "2.5.1"
+  s.add_dependency "rails"
+  s.add_dependency "mongoid"
   s.add_dependency "bson_ext"
 
   s.add_development_dependency "rspec-rails"
