@@ -11,7 +11,6 @@ module Unirole
     
     has_many :actors, :class_name => "Unirole::Actor"
     validate :validate_on_parent
-    cache
 
     def validate_on_parent
       return unless parent

@@ -8,7 +8,6 @@ module Unirole
     validate :name, :uniqueness => true, :presence => true
 
     has_many :actors, :class_name => "Unirole::Actor"
-    cache
 
     def self.default
       find_or_create_by(name: '成员')

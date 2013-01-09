@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+require 'unirole/organ'
+
 module Unirole
   class Actor
     include Mongoid::Document
@@ -8,8 +10,7 @@ module Unirole
     belongs_to :organ, :class_name => "Unirole::Organ"
     has_and_belongs_to_many :users, class_name: 'Unirole::User'
 
-    key :organ_id, :membership_id
-    cache
+    validates_uniqueness_of :organ_id, scope: [:membership_id]
 
     def to_s
       organ.full_name + ":" + membership.name
