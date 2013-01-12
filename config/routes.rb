@@ -8,7 +8,10 @@ Unirole::Engine.routes.draw do
   end
   resources :ranks, :only=> [:index,:create,:destroy,:update]
   resources :memberships, :only=> [:index,:create,:destroy,:update]
-  resources :users, :only=> [:index,:create,:destroy,:update]
+  resources :users do
+    resources :actors
+  end
+  
   resources :actors, :only=> [:index,:create,:destroy,:update] do
       get "user_list"
       get "add_user"

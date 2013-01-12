@@ -1,31 +1,17 @@
-section
-  div class="data_bar"
-    form id="rank_form" action="#{users_path}" method="post"
-      .padding-top
-        label for="users[login]" 登录帐号：
-        input.text_input id="users[login]" name="users[login]" type="text" value=""
-      .padding-top
-        label.text_spacing for="users[name]" 姓名：
-        input.text_input id="users[name]" name="users[name]" type="text" value=""
-      .error
-        =flash[:notice]
-      .padding-top
-        input.btn_save type="submit" value="添加" 
-        span id="show_span_for_notice"
-    
-
-  table.home_table
-    thead
-      tr
-        th 序号
-        th 登录帐号
-        th 姓名
-        th 操作
-    tbody
-      - @users.each_with_index do |user,index|
-        tr id=user.id
-          td =index+1
-          td =user.login
-          td 
-            input.text_input value=user.name name="name" type="text" readonly="readonly"
-          td = link_to "删除",user_path(user),:confirm=>"您是否要删除此记录?",:method=>:delete  
+table.table.table-bordered
+  thead
+    tr
+      th= t('simple_form.labels.unirole_user.login')
+      th= t('simple_form.labels.unirole_user.name')
+      th= t('simple_form.labels.unirole_user.actors')
+      th
+  - @users.each do |user|
+    tr
+      td= user.login
+      td= user.name
+      td
+        ul
+          - user.actors.each do |actor|
+            li= actor.to_s
+      td
+        a.btn.btn-primary.btn-small href=user_actors_path(user) = t('controllers.actor.actions.index')
