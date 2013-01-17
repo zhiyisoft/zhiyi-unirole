@@ -5,3 +5,11 @@ zh_CN:
     actor: "用户角色"
     membership: "身份职责"
     user: "用户账号"
+
+    member:
+      login: 登陆名
+      name: 姓名
+      first_name: 姓
+      last_name: 名
+      password: 密码
+      repeat_pwd: 重复密码
