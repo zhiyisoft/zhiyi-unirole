@@ -32,12 +32,16 @@ module Unirole
       excludes(parent_id: nil)
     end 
 
-
     def self.find_by_full_name leader, names
       chain = if names.instance_of?(Array) then names else names.split('/') end
       raise "Name of Organ can't be null." if chain.size == 0
-      me = Organ.where(:name => chain.first, :parent_id => (leader.nil? ? nil : leader.id)).first
 
+      unless leader
+        me = Organ.roots.where(name: chain.first).first 
+      else
+        me = leader.children.where(name: chain.first).first
+      end
+      
       raise "Organ #{chain.first} is not exist!" unless me
       return me if chain.size == 1
       return Organ.find_by_full_name(me, chain.drop(1))
