@@ -1,0 +1,20 @@
+h2 新建用户
+form action=members_path method="post"
+  div
+    span= t('unirole.member.login')
+    input type="text" name="member[uid]"
+  div
+    span= t('unirole.member.first_name')
+    input type="text" name="member[sn]"
+  div
+    span= t('unirole.member.last_name')
+    input type="text" name="member[cn]"
+  div
+    span= t('unirole.member.password')
+    input type="password" name="member[userPassword]"
+  div
+    span= t('unirole.member.repeat_pwd')
+    input type="password" name="repeat_password"
+  div
+    input type="submit" value="保存"
+    a href="/unirole/members" 返回

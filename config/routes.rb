@@ -14,6 +14,13 @@ Unirole::Engine.routes.draw do
       get :resetpass
     end
   end
+
+  resources :members,:only => [:index,:new,:edit,:create,:update,:destroy] do
+    collection do 
+      get 'password'
+      post 'reset_password'
+    end
+  end
   
   resources :actors, :only=> [:index,:create,:destroy,:update] do
       get "user_list"

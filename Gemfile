@@ -12,6 +12,7 @@ gem "haml"
 gem "mongoid",'2.5.1'
 gem "thin"
 gem "i18n"
+gem 'zhiyi-member', :git => 'git@task.zhiyisoft.com:talent/zhiyi/zhiyi-member.git'
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
