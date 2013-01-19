@@ -16,6 +16,6 @@ table.table.table-bordered
             li= actor.to_s
       td= t("helpers.state.unirole/user.#{user.state}")
       td
-        a.btn.btn-primary.btn-small href=user_actors_path(user) = t('controllers.actor.actions.index')
+        a.btn.btn-primary.btn-small href=user_actors_path(user) = t('controllers.unirole/actors.actions.index')
 
 a.btn.btn-primary href=new_user_path = t('controllers.unirole/users.actions.new')

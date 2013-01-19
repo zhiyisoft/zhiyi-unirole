@@ -1,15 +1,62 @@
 zh_CN:
-  unirole:
-    rank: "行政等级"
-    organ: "组织机构"
-    actor: "用户角色"
-    membership: "身份职责"
-    user: "用户账号"
+  mongoid:
+    errors:
+      models:
+        unirole/user: &unirole_user_errors
+          attributes:
+            sn:
+              blank: 必填项
+            cn:
+              blank: 必填项
+            login:
+              blank: 必填项
 
-    member:
-      login: 登陆名
-      name: 姓名
-      first_name: 姓
-      last_name: 名
-      password: 密码
-      repeat_pwd: 重复密码
+  simple_form:
+    labels:
+      unirole::user: &unirole_user
+        sn: 姓
+        cn: 名
+        name: 姓名
+        login: 登录账号
+        actors: 角色
+        state: 状态
+      unirole_user:
+        <<: *unirole_user
+      user:
+        <<: *unirole_user
+
+    hints:
+      unirole::user: &unirole_user_hints
+        login: 用户口令与用户账号相同，请提醒用户在首次登录后及时修改口令!
+      unirole/user: 
+        <<: *unirole_user_hints
+      unirole_user: 
+        <<: *unirole_user_hints
+      user: 
+        <<: *unirole_user_hints
+ 
+    placeholders:
+
+  helpers:
+    state:
+      unirole/user:
+        actived: 激活
+        unregistered: 未注册
+        locked: 锁定
+    submit:
+      user:
+        update: 更新
+        create: 创建
+
+
+  controllers:
+    unirole/users: &unirole_user_controller
+      actions:
+        new: 新建用户
+        create: 创建用户
+        index: 用户列表
+        show: 用户信息
+        resetpass: 重置口令
+    unirole/actors:
+      actions:
+        index: 角色分配
