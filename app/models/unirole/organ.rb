@@ -1,27 +1,22 @@
+require 'mongoid-ancestry'
+
 module Unirole
   class Organ
     include Mongoid::Document
+    include Mongoid::Timestamps
+    include Mongoid::Ancestry
+    has_ancestry
 
     field :name
-
     belongs_to :rank, :class_name => "Unirole::Rank"
-    belongs_to :parent, :class_name => "Unirole::Organ", :foreign_key => "parent_id"
-    has_many :children,:class_name => "Unirole::Organ",:foreign_key => "children_id"
-    
     has_many :actors, :class_name => "Unirole::Actor"
+    index({ancestry: 1})
 
     validates_presence_of :name
-    validate :validate_on_parent
+    validates_uniqueness_of :name, :scope => [:ancestry]
 
     after_create do |o|
       Unirole::Actor.create(organ: o, membership: Unirole::Membership.default)
-    end
-
-    def validate_on_parent
-      return unless parent
-      unless rank.member_of?(parent.rank)
-        raise "Parent Error"
-      end
     end
 
     def full_name

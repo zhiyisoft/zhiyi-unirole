@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency "cancan"
   s.add_dependency "rubycas-client"
   s.add_dependency "state_machine"
+  s.add_dependency "mongoid-ancestry", '~> 0.3.0'
 
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "shoulda-matchers"
