@@ -3,14 +3,19 @@ module Unirole
     include Mongoid::Document
 
     field :name
-    validate :name, :presence => true
 
     belongs_to :rank, :class_name => "Unirole::Rank"
     belongs_to :parent, :class_name => "Unirole::Organ", :foreign_key => "parent_id"
     has_many :children,:class_name => "Unirole::Organ",:foreign_key => "children_id"
     
     has_many :actors, :class_name => "Unirole::Actor"
+
+    validates_presence_of :name
     validate :validate_on_parent
+
+    after_create do |o|
+      Unirole::Actor.create(organ: o, membership: Unirole::Membership.default)
+    end
 
     def validate_on_parent
       return unless parent

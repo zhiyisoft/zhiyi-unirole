@@ -7,6 +7,6 @@
         = f.attribute :actors
 
   .span6
-    = simple_form_for @user do |f|
+    = simple_form_for @user, url: user_path(@user) do |f|
       = f.association :actors, collection: Unirole::Actor.all, as: :check_boxes
       = f.button :submit

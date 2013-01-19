@@ -10,6 +10,9 @@ Unirole::Engine.routes.draw do
   resources :memberships, :only=> [:index,:create,:destroy,:update]
   resources :users do
     resources :actors
+    member do 
+      get :resetpass
+    end
   end
   
   resources :actors, :only=> [:index,:create,:destroy,:update] do

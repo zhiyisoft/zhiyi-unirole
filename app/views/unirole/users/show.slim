@@ -7,6 +7,7 @@
         = f.attribute :actors
 
   .span6
-    = simple_form_for @user do |f|
-      = f.association :actors, collection: Unirole::Actor.all, as: :check_boxes
-      = f.button :submit
+    - if can? :resetpass, @user
+      a.btn.btn-warning href=unirole_app.resetpass_user_path(@user) = t('controllers.unirole/users.actions.resetpass')
+    span.icon-bar
+    a.btn href=unirole_app.users_path = t('system.return')

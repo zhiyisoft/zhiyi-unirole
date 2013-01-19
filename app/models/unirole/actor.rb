@@ -6,11 +6,13 @@ module Unirole
   class Actor
     include Mongoid::Document
 
-    belongs_to :membership, :class_name => "Unirole::Membership"
-    belongs_to :organ, :class_name => "Unirole::Organ"
+    belongs_to :membership, class_name: "Unirole::Membership"
+    belongs_to :organ, class_name: "Unirole::Organ"
     has_and_belongs_to_many :users, class_name: 'Unirole::User'
 
     validates_uniqueness_of :organ_id, scope: [:membership_id]
+
+    scope :assignables, where(:membership.in => Unirole::Membership.assignables)
 
     def to_s
       organ.full_name + ":" + membership.name
