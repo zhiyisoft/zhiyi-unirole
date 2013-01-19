@@ -45,7 +45,6 @@ module Unirole
     end
 
     after_create do |u|
-      p '--------------------------------------------------------------------------------', u, u.class, @@manager, u.class.manager
       um = u.class.manager
       return unless um
       return u.register if um.exist?(u.login)
