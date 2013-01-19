@@ -4,6 +4,7 @@ table.table.table-bordered
       th= t('simple_form.labels.unirole_user.login')
       th= t('simple_form.labels.unirole_user.name')
       th= t('simple_form.labels.unirole_user.actors')
+      th= t('simple_form.labels.unirole_user.state')
       th
   - @users.each do |user|
     tr
@@ -13,6 +14,7 @@ table.table.table-bordered
         ul
           - user.actors.each do |actor|
             li= actor.to_s
+      td= t("helpers.state.unirole/user.#{user.state}")
       td
         a.btn.btn-primary.btn-small href=user_actors_path(user) = t('controllers.actor.actions.index')
 
