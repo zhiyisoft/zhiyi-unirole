@@ -1,27 +1,12 @@
-section
-  ul.role_info
-    -@organs.each do |list|
-      li
-        span =list.name 
-        a href="javascript:void(0)" onclick="add_membership('#{list.id}')" 添加身份
-        span id="#{list.id}_edit_membership"
-        hr 
-        - membership =[]
-        -list.actors.each do |actor|
-          - membership << actor.membership
-        - membership.sort.each do |membership|
-          span 
-            =membership.name
-            span 
-            - Unirole::Actor.where(:membership_id=>membership.id,:organ_id=>list.id).each do |idx|
-              -if idx.user_ids.size >0
-                span 用户数：
-                span =idx.user_ids.size
-              -else
-                span 暂无用户
-              a href="javascript:void(0)" onclick="edit_user('#{idx.id}','#{idx.to_s}')" 管理成员
-              =link_to "删除身份",actor_path(idx),:confirm=>"您是否要删除此记录?",:method=>:delete
-            hr
+.row-fluid
+  .span6
+    table.table.table-hover
+      - zhiyi_show_for @user do |f|
+        = f.attribute :name
+        = f.attribute :login
+        = f.attribute :actors
 
-
-        =render :partial=>"children",:locals=>{:parent =>list}
+  .span6
+    = simple_form_for @user, url: user_path(@user) do |f|
+      = f.association :actors, collection: Unirole::Actor.all, as: :check_boxes
+      = f.button :submit

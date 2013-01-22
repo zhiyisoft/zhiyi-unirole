@@ -1,14 +1,63 @@
+# -*- coding: utf-8 -*-
+require 'state_machine'
+
 module Unirole
   class User
+    @@manager = nil
+
+    def self.manager
+      @@manager
+    end
+
+    def self.manager= klass
+      @@manager = klass.instance_of?(Class) ? klass : klass.to_s.constantize
+    end
+
+
     include Mongoid::Document
 
     field :login
-    validates :login, :uniqueness => true, :presence => true
-
+    field :sn
+    field :cn
     field :name
-    validates :name, :presence => true
 
     has_and_belongs_to_many :actors, class_name: 'Unirole::Actor'
+
+    state_machine :state, initial: :unregistered do 
+      event :register do
+        transition [:unregistered] => :actived
+      end
+
+      event :lock do
+        transition [:actived] => :locked
+      end
+
+      event :unlock do
+        transition [:locked] => :actived
+      end
+    end
+
+    validates_uniqueness_of :login
+    validates_presence_of :sn, :cn, :login
+
+    before_create do |u|
+      u.name = u.sn + u.cn
+    end
+
+    after_create do |u|
+      um = u.class.manager
+      return unless um
+      return u.register if um.exist?(u.login)
+
+      um.add({
+        uid: u.login,
+        sn: u.sn,
+        cn: u.cn,
+        displayName: u.name,
+        userPassword: u.login
+      })
+      u.register if um.exist?(u.login)
+    end
 
     def organs
       actors.where(membership_id: Membership.default.id).map {|x| x.organ}.uniq

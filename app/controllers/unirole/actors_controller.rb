@@ -3,9 +3,12 @@
 module Unirole
   class ActorsController < UniroleController
 
+    before_filter CASClient::Frameworks::Rails::Filter
+    load_and_authorize_resource class: Unirole::Actor
+
     def index
-      @organs = Organ.where(:parent_id=>nil)
-      render :layout => (not request.xhr?)
+      @user = Unirole::User.find(params[:user_id])
+      @actors = @user.actors
     end
 
     def create
