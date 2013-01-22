@@ -10,7 +10,7 @@ module Unirole
     field :name
     belongs_to :rank, :class_name => "Unirole::Rank"
     has_many :actors, :class_name => "Unirole::Actor"
-    index({ancestry: 1})
+    index :ancestry
 
     validates_presence_of :name
     validates_uniqueness_of :name, :scope => [:ancestry]
