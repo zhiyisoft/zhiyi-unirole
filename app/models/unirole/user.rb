@@ -70,7 +70,7 @@ module Unirole
     end
 
     def take_on? actor
-      not actors.where(id: actor.id).first.nil?
+      actors.include?(actor)
     end
   end
 end
