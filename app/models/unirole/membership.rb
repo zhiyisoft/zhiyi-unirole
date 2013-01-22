@@ -9,8 +9,12 @@ module Unirole
 
     has_many :actors, :class_name => "Unirole::Actor"
 
+    def self.default_name
+      '成员'
+    end
+
     def self.default
-      find_or_create_by(name: '成员')
+      find_or_create_by(name: self.default_name)
     end
   end
 end

@@ -22,13 +22,13 @@ end
 class String
   def to_actor
     (organ_str, membership_str) = self.split(":")
-    membership_str = '成员' unless membership_str
-    if membership_str == '成员' then 
-      Unirole::Actor.find_or_create_by(:organ_id => organ_str.to_organ.id, 
-                          :membership_id => Unirole::Membership.where(:name => membership_str).first.id)
-    else 
-      Unirole::Actor.where(:organ_id => organ_str.to_organ.id, 
-                           :membership_id => Unirole::Membership.where(:name => membership_str).first.id).first
+    membership_str = Unirole::Membership.default_name unless membership_str
+    if membership_str ==  Unirole::Membership.default_name then 
+      Unirole::Actor.find_or_create_by(organ: organ_str.to_organ,
+                                       membership: Unirole::Membership.default)
+    else
+      Unirole::Actor.find_by(organ: organ_str.to_organ,
+                             membership: Unirole::Membership.find_by(name: membership_str))
     end
   end
 end
