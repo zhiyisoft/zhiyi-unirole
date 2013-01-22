@@ -2,16 +2,8 @@
 
 module Unirole
   class MembershipsController < UniroleController
-    def index      
-      @membership = Membership.all
-      
-      respond_to do |format|
-        format.html {render :layout => (not request.xhr?)}
-        format.json {render :json=>@membership}
-      end
+    load_and_authorize_resource class: Unirole::Membership   
 
-    end
-    
     def create      
       @membership = Membership.new(params[:membership])
       if @membership.save
