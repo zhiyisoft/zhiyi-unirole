@@ -6,7 +6,7 @@ module Unirole
 
     def index
       page = params[:page] || 1
-      @users = Unirole::User.all.cache.paginate(page: page)
+      @users = Unirole::User.order_by(login: :asc).cache.paginate(page: page)
     end
 
     def create
