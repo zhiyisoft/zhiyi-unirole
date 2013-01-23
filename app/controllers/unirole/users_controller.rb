@@ -1,10 +1,15 @@
 module Unirole
   class UsersController < UniroleController
     before_filter CASClient::Frameworks::Rails::Filter
-    load_and_authorize_resource class: Unirole::User
+    load_resource class: Unirole::User, expect: [:index]
+    authorize_resource class: Unirole::User
+
+    def index
+      page = params[:page] || 1
+      @users = Unirole::User.all.cache.paginate(page: page)
+    end
 
     def create
-      @user = Unirole::User.create(params[:user])
       return redirect_to action: :index if @user.save
       render :new
     end

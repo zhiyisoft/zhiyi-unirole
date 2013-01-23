@@ -6,11 +6,6 @@ module Unirole
     before_filter CASClient::Frameworks::Rails::Filter
     load_and_authorize_resource class: Unirole::Actor
 
-    def index
-      @user = Unirole::User.find(params[:user_id])
-      @actors = @user.actors
-    end
-
     def create
       @actor=Actor.new      
       @actor[:membership_id] = params[:membership_id]
@@ -39,31 +34,5 @@ module Unirole
       end
       redirect_to :controller =>"actors",:action=>"index"
     end
-
-#----用户管理---------------------------
-    def add_user
-      @actor_user = Actor.find(params[:actor_id])
-      @users = User.all
-      render :layout=>false
-    end
-
-    def user_list
-      @user_ids = Actor.find(params[:actor_id])
-      render :layout=>false
-    end
-
-    def add_user_for_actor
-      @user_ids = Actor.find(params[:actor_id])
-      @user = User.find(params[:user]) 
-      if params[:act]=="add"                
-        @user_ids.user_ids << @user.id  unless @user_ids.user_ids.include?(@user.id)
-      else       
-       @user_ids.user_ids.delete(@user.id)
-      end      
-
-      @user_ids.save
-      render :json =>Actor.find(params[:actor_id])      
-    end
-
   end
 end

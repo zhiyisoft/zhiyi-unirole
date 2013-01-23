@@ -15,6 +15,7 @@ module Unirole
 
 
     include Mongoid::Document
+    include Mongoid::Timestamps
 
     field :login
     field :sn

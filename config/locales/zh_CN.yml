@@ -35,19 +35,15 @@ zh_CN:
         name: 机构名称
         parent: 上级机构
 
+    placeholders:
+      user: 
+        login: 用户口令与用户账号相同，请提醒用户在首次登录后及时修改口令!
+
 
     hints:
       organ:
         parent: 不选表示目前无上级单位
 
-      unirole::user: &unirole_user_hints
-        login: 用户口令与用户账号相同，请提醒用户在首次登录后及时修改口令!
-      unirole/user: 
-        <<: *unirole_user_hints
-      unirole_user: 
-        <<: *unirole_user_hints
-      user: 
-        <<: *unirole_user_hints
  
     placeholders:
 
@@ -61,6 +57,7 @@ zh_CN:
       user:
         update: 更新
         create: 创建
+        edit: 编辑
       membership:
         update: 更新
         create: 新增
@@ -70,6 +67,7 @@ zh_CN:
       actions:
         new: 新建用户
         create: 创建用户
+        edit: 编辑用户
         index: 用户列表
         show: 用户信息
         resetpass: 重置口令

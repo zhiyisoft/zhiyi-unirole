@@ -20,10 +20,6 @@ module Unirole
       end
     end
 
-    def update
-
-    end
-
     def get_parent
      @data=[]
      rank = Rank.find(params[:id])

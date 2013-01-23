@@ -1,0 +1,6 @@
+= simple_form_for @user, html: { class: 'form-horizontal' } do |f|
+  = f.input :login, readonly: true
+  = f.input :sn
+  = f.input :cn
+  = f.association :actors, collection: Unirole::Actor.all, as: :check_boxes
+  = f.button :submit, class: 'btn-primary'
