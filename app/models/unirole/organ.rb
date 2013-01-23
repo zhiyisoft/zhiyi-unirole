@@ -12,7 +12,7 @@ module Unirole
     has_many :actors, :class_name => "Unirole::Actor"
     index :ancestry
 
-    validates_presence_of :name
+    validates_presence_of :name, :rank
     validates_uniqueness_of :name, :scope => [:ancestry]
 
     after_create do |o|

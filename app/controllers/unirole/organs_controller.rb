@@ -2,9 +2,11 @@
 
 module Unirole
   class OrgansController < UniroleController
-    def index
-      @organs = Organ.where(:parent_id=>nil)
-      render :layout => (not request.xhr?)
+
+    load_and_authorize_resource class: Unirole::Organ 
+
+    def tree
+      render json: tree_of.to_json
     end
 
     def create
@@ -36,6 +38,12 @@ module Unirole
       end
       
       render :json =>@data.to_json
+    end
+
+    private
+    def tree_of node=nil
+      organs = node.nil? ? Unirole::Organ.roots : node.children
+      organs.map {|organ| { label: organ.name }.merge(organ.has_children? ? {children: tree_of(organ)} : {})}
     end
   end
 end

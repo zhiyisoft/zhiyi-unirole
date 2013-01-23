@@ -4,6 +4,7 @@ Unirole::Engine.routes.draw do
   resources :organs, :only => [:index,:create,:destroy,:update] do
     collection do
       get "get_parent"
+      get "tree"
     end
   end
   resources :ranks, :only=> [:index,:create,:destroy,:update]
