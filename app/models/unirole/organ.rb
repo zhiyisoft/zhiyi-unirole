@@ -29,7 +29,7 @@ module Unirole
     end
     
     def self.departments
-      excludes(parent_id: nil)
+      where(parent: nil)
     end 
 
     def self.find_by_full_name leader, names

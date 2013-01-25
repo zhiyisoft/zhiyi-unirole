@@ -10,6 +10,7 @@ module Unirole
     end
 
     def create
+      @user = Unirole::User.create(params[:user])
       return redirect_to action: :index if @user.save
       render :new
     end
