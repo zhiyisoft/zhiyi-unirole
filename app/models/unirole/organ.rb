@@ -29,7 +29,7 @@ module Unirole
     end
     
     def self.departments
-      where(parent: nil)
+      excludes(ancestry: nil)
     end 
 
     def self.find_by_full_name leader, names
