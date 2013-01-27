@@ -1,3 +1,13 @@
-= Unirole
+= 知一集中角色管理
 
+Unirole是成都知一公司内部使用的集中角色管理引擎，关注用户登录账号、机构关系、机构级别、身份管理与角色定义。
+
+== 使用方法
+
+grab ruote
+
+  gem install ruote
+  gem install yajl-ruby
+
+Note : the json gem has a serious bug :
 This project rocks and uses MIT-LICENSE.

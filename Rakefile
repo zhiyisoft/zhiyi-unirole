@@ -4,6 +4,7 @@ begin
 rescue LoadError
   puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
 end
+
 begin
   require 'rdoc/task'
 rescue LoadError
@@ -12,16 +13,16 @@ rescue LoadError
   RDoc::Task = Rake::RDocTask
 end
 
-RDoc::Task.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'Unirole'
-  rdoc.options << '--line-numbers'
-  rdoc.rdoc_files.include('README.rdoc')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+Rake::RDocTask.new do |rd|
+
+  rd.main = 'README.rdoc'
+  rd.rdoc_dir = 'rdoc'
+
+  rd.rdoc_files.include(
+    'README.rdoc', 'app/**/*.rb')
+
+  rd.title = "Zhiyisoft Unirole"
 end
 
 
-
-
-Bundler::GemHelper.install_tasks
 
