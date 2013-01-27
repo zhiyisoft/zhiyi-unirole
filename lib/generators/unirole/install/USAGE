@@ -1,0 +1,7 @@
+Description:
+    Install zhiyi-unirole's gems of dependency, css and js files, change application config
+
+Usage:
+    rails generate unirole:install
+
+        
