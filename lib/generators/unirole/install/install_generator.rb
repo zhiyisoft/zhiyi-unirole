@@ -13,6 +13,8 @@ class Unirole::InstallGenerator < Rails::Generators::Base
     gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails'  
     gem 'bootstrap-will_paginate'
     gem 'bootstrap_helper'
+
+    route %Q(mount Unirole::Engine => '/unirole', as: 'unirole_app')
   end
 
   def copy_additional_file

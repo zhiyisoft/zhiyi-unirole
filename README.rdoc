@@ -4,10 +4,12 @@ Unirole是成都知一公司内部使用的集中角色管理引擎，关注用�
 
 == 使用方法
 
-grab ruote
+在 Gemfile 中增加一行：
 
-  gem install ruote
-  gem install yajl-ruby
+  gem 'unirole', git: 'git@task.zhiyisoft.com:bazaar/xiegang/zhiyi-unirole.git'
 
-Note : the json gem has a serious bug :
-This project rocks and uses MIT-LICENSE.
+更新后安装：
+
+  bundle install
+  rails g unirole:install
+
