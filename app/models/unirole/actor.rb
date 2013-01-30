@@ -15,7 +15,7 @@ module Unirole
     scope :assignables, where(:membership.in => Unirole::Membership.assignables)
 
     def to_s
-      organ.full_name + ":" + membership.name
+      (organ ? organ.full_name : "" )+ ":" + membership.name
     end
   end
 end
@@ -25,11 +25,12 @@ class String
   def to_actor
     (organ_str, membership_str) = self.split(":")
     membership_str = Unirole::Membership.default_name unless membership_str
+    organ_id = organ_str.nil? ? nil : organ_str.to_organ.id
     if membership_str ==  Unirole::Membership.default_name then 
-      Unirole::Actor.find_or_create_by(organ_id: organ_str.to_organ.id,
+      Unirole::Actor.find_or_create_by(organ_id: organ_id,
                                        membership_id: Unirole::Membership.default.id)
     else
-      Unirole::Actor.where(organ_id: organ_str.to_organ.id,
+      Unirole::Actor.where(organ_id: organ_id,
                            membership_id: Unirole::Membership.where(name: membership_str).first.id).first
     end
   end
