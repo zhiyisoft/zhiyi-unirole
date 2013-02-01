@@ -2,6 +2,7 @@
 
 module Unirole
   class RanksController < UniroleController
+    authorize_resource class: Unirole::Rank
     def index      
       @rank = Rank.all
       render :layout => (not request.xhr?)

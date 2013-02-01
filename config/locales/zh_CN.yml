@@ -80,3 +80,7 @@ zh_CN:
     unirole/organs:
       actions:
         index: 部门管理
+
+  views:
+    unirole/navicates:
+      title: 组织机构及用户管理

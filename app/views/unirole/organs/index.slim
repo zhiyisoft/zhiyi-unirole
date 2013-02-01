@@ -1,14 +1,17 @@
-.row-fluid
-  .span6
-    #organ-tree
+.span3
+  = render "unirole/public/navicate"
+.span9
+  .row-fluid
+    .span6
+      #organ-tree
 
-  .span6
-    = simple_form_for Unirole::Organ.new, html: { class: 'form-vertical' } do |f|
-      = f.input :rank, collection: Unirole::Rank.all, include_blank: false
-      = f.input :parent_id, collection: Unirole::Organ.all
-      = f.input :name
-      = f.button :submit, class: 'btn btn-primary'
+    .span6
+      = simple_form_for Unirole::Organ.new, html: { class: 'form-vertical' } do |f|
+        = f.input :rank, collection: Unirole::Rank.all, include_blank: false
+        = f.input :parent_id, collection: Unirole::Organ.all
+        = f.input :name
+        = f.button :submit, class: 'btn btn-primary'
 
 
-javascript:
-  $('#organ-tree').tree( { dataUrl: '/unirole/organs/tree.json', autoOpen: 0 } )
+  javascript:
+    $('#organ-tree').tree( { dataUrl: '/unirole/organs/tree.json', autoOpen: 0 } )

@@ -15,7 +15,7 @@ module Unirole
     scope :assignables, where(:membership.in => Unirole::Membership.assignables)
 
     def to_s
-      organ.full_name + ":" + membership.name
+       (organ ? organ.full_name : "" )+ ":" + membership.name
     end
   end
 end
