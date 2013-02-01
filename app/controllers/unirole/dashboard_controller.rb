@@ -2,9 +2,8 @@
 
 module Unirole
   class DashboardController < UniroleController
+  	skip_authorization_check
     def index
-      p "dashboard controller"
-      render :layout => (not request.xhr?)
     end
   end
 end
