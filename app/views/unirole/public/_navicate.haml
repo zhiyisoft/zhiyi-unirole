@@ -1,0 +1,16 @@
+.row
+  .well.sidebar-nav
+    %ul.nav.nav-list
+      %li.nav-header= t "views.unirole/navicates.title"
+      - Unirole::Navicate.all.each do |navicate|
+        - if request.path.include?(navicate[:url])
+          %li.active
+            %a{:href => "#{navicate[:url]}"}
+              %i.icon-chevron-right
+              = navicate[:name]
+        - else
+          %li
+            %a{:href => "#{navicate[:url]}"}
+              %i.icon-chevron-right
+              = navicate[:name]
+    

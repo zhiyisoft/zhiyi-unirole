@@ -1,27 +1,30 @@
-.row-fluid
-    a.btn.btn-primary href=new_user_path = t('controllers.unirole/users.actions.new')
+.span3
+  = render "unirole/public/navicate"
+.span9
+  .row-fluid
+      a.btn.btn-primary href=new_user_path = t('controllers.unirole/users.actions.new')
 
-.row-fluid
-  table.table.table-bordered
-    thead
-      tr
-        th= t('simple_form.labels.unirole_user.login')
-        th= t('simple_form.labels.unirole_user.name')
-        th= t('simple_form.labels.unirole_user.actors')
-        th= t('simple_form.labels.unirole_user.state')
-        th
-    - @users.each do |user|
-      tr
-        td: a href=user_path(user) = user.login
-        td= user.name
-        td
-          ul
-            - cache user do
-              - user.actors.each do |actor|
-                li= actor.to_s
-        td= t("helpers.state.unirole/user.#{user.state}")
-        td
-          a.btn.btn-primary.btn-small href=edit_user_path(user) = t('controllers.unirole/users.actions.edit')
+  .row-fluid
+    table.table.table-bordered
+      thead
+        tr
+          th= t('simple_form.labels.unirole_user.login')
+          th= t('simple_form.labels.unirole_user.name')
+          th= t('simple_form.labels.unirole_user.actors')
+          th= t('simple_form.labels.unirole_user.state')
+          th
+      - @users.each do |user|
+        tr
+          td: a href=user_path(user) = user.login
+          td= user.name
+          td
+            ul
+              - cache user do
+                - user.actors.each do |actor|
+                  li= actor.to_s
+          td= t("helpers.state.unirole/user.#{user.state}")
+          td
+            a.btn.btn-primary.btn-small href=edit_user_path(user) = t('controllers.unirole/users.actions.edit')
 
-= will_paginate @users
+  = will_paginate @users
 
