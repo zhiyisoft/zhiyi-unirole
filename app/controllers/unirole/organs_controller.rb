@@ -3,7 +3,7 @@
 module Unirole
   class OrgansController < UniroleController
 
-    load_and_authorize_resource class: Unirole::Organ 
+    load_and_authorize_resource :class => Unirole::Organ 
 
     def tree
       render json: tree_of.to_json

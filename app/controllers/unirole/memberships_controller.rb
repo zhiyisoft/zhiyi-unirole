@@ -2,7 +2,7 @@
 
 module Unirole
   class MembershipsController < UniroleController
-    load_and_authorize_resource class: Unirole::Membership   
+    load_and_authorize_resource :class => Unirole::Membership   
 
     def create      
       @membership = Membership.new(params[:membership])

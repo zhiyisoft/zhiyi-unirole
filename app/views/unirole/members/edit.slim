@@ -1,7 +1,0 @@
-h2 编辑#{@member[:uid]}信息
-=form_tag member_path(:id => @member[:uid]),:method=>"put" do
-  span 姓名:
-  input type="text" name="member[display]" value="#{@member[:display]}"
-  div
-    input type="submit" value="保存"
-    a href="/unirole/members" 返回

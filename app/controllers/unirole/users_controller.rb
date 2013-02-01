@@ -1,8 +1,8 @@
 module Unirole
   class UsersController < UniroleController
     before_filter CASClient::Frameworks::Rails::Filter
-    load_resource class: Unirole::User, expect: [:index]
-    authorize_resource class: Unirole::User
+    load_resource :class => Unirole::User, expect: [:index]
+    authorize_resource :class => Unirole::User
 
     def index
       page = params[:page] || 1

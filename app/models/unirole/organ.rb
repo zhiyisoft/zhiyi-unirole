@@ -6,7 +6,7 @@ module Unirole
     include Mongoid::Timestamps
     include Mongoid::Ancestry
     has_ancestry
-
+    
     field :name
     belongs_to :rank, :class_name => "Unirole::Rank"
     has_many :actors, :class_name => "Unirole::Actor"

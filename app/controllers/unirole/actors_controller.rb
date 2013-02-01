@@ -2,37 +2,21 @@
 
 module Unirole
   class ActorsController < UniroleController
+    respond_to :html, :json
+    load_and_authorize_resource :class => Unirole::Actor
 
-    before_filter CASClient::Frameworks::Rails::Filter
-    load_and_authorize_resource class: Unirole::Actor
-
-    def create
-      @actor=Actor.new      
-      @actor[:membership_id] = params[:membership_id]
-      @actor[:organ_id] = params[:organ_id]
-      if Actor.where(:membership_id =>@actor[:membership_id], :organ_id=>@actor[:organ_id]).size==0
-        if @actor.save 
-          @data={:status=>"save success!"}
-        else
-          @data={:status=>"save error!"}
-        end
-      else
-        @data={:status=>"Data already exists!"}
-      end
-      respond_to do |format|
-        format.html
-        format.json {render :json =>@data}
+    def index
+      respond_with @actors do |f|
+        f.json { render json: @actors }
       end
     end
 
+    def create
+      respond_with @actor
+    end
+
     def destroy
-      @actor = Actor.find(params[:id])
-      if @actor.destroy
-        flash[:notice] = "del success!"
-      else
-        flash[:notice] = "del error!"
-      end
-      redirect_to :controller =>"actors",:action=>"index"
+      @actor.destroy
     end
   end
 end

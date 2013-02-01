@@ -1,0 +1,4 @@
+= simple_form_for @actor, html: { class: 'form-horizontal'} do |f|
+  = f.association :organ, collection: Unirole::Organ.all
+  = f.association :membership, collection: Unirole::Membership.all
+  = f.button :submit

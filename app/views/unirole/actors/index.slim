@@ -1,3 +1,7 @@
 .row-fluid
   .span6
-    #organ-tree
+    table.table
+      - @actors.each do |actor|
+        tr
+          td= actor.organ.name
+          td= actor.membership.name
