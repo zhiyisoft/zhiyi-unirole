@@ -41,11 +41,11 @@ module Unirole
     validates_uniqueness_of :login
     validates_presence_of :sn, :cn, :login
 
-    before_create do |u|
+    before_save do |u|
       u.name = u.sn + u.cn
     end
 
-    after_create do |u|
+    after_update do |u|
       um = u.class.manager
       return unless um
       return u.register if um.exist?(u.login)

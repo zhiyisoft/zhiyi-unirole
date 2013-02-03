@@ -19,8 +19,11 @@ module Unirole
     end
 
     def update
-      return redirect_to action: :show, id: @user.id if @user.update_attributes(params[:user])
-      redirect_to :back
+      if @user.update_attributes(params[:user])
+        respond_with @user
+      else
+        redirect_to :back
+      end
     end
 
     def destroy
