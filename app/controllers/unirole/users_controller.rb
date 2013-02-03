@@ -4,6 +4,10 @@ module Unirole
     respond_to :html, :json, :js
     layout Proc.new { |controller| controller.request.xhr? ? false : 'application' }
 
+    def new
+      respond_with @user
+    end
+
     def index
       page = params[:page] || 1
       @users = Unirole::User.order_by(login: :asc).cache.paginate(page: page)

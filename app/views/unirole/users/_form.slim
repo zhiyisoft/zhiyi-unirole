@@ -1,4 +1,4 @@
-= simple_form_for @user, remote: true, html: { class: 'form-vertical' } do |f|
+= simple_form_for @user, html: { :"data-remote" => "true" } do |f|
   = f.input :login, readonly: (not @user.new_record?)
   = f.input :sn
   = f.input :cn

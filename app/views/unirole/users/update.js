@@ -1,4 +1,4 @@
 $("#<%= dom_id @user %>").replaceWith("<%= j render @user %>");
 <% @user = Unirole::User.new %>
-$("#new_user > form").replaceWith("<%= j render "form" %>")
-$("#new_user > form")[0].reset();
+$("#working_area > form").replaceWith("<%= j render "form" %>")
+$("#working_area > form")[0].reset();

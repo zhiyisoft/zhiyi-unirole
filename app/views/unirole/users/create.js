@@ -1,2 +1,2 @@
 $('<%= j render @user %>').appendTo('#users').hide().fadeIn();
-$("#new_user form")[0].reset();
+$("#working_area form")[0].reset();

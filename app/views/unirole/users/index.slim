@@ -1,20 +1,20 @@
 .row-fluid
-  .span4.well#new_user
+  .span4.well#working_area
+    a href=new_user_path data-remote='true'
+      i.icon-plus-sign
+      |  新建
 
   .span8
     table.table.table-bordered#users
       thead
         tr
           th
-          th= t('simple_form.labels.unirole_user.login')
-          th= t('simple_form.labels.unirole_user.name')
-          th= t('simple_form.labels.unirole_user.actors')
-          th= t('simple_form.labels.unirole_user.state')
+          th= t('simple_form.labels.user.login')
+          th= t('simple_form.labels.user.name')
+          th= t('simple_form.labels.user.actors')
+          th= t('simple_form.labels.user.state')
       - @users.each do |user|
         = render partial: 'user', locals: { user: user }
 
   = will_paginate @users
-
-javascript:
-  $('#new_user').load("/unirole/users/new.html")
-
+  
