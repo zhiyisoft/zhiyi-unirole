@@ -1,4 +1,5 @@
-source "http://rubygems.org"
+source "https://rubygems.org"
+#source "http://ruby.taobao.org"
 
 # Declare your gem's dependencies in unirole.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -9,7 +10,7 @@ gemspec
 gem "jquery-rails"
 gem "slim"
 gem "haml"
-gem "mongoid"
+gem "mongoid", "~> 3.0"
 gem "thin"
 gem "i18n"
 gem 'zhiyi-member', :git => 'git@task.zhiyisoft.com:talent/zhiyi/zhiyi-member.git'

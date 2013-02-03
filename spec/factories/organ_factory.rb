@@ -1,35 +1,33 @@
 # -*- coding: utf-8 -*-
 
 FactoryGirl.define do
-  {:snqk_organ => "蜀南气矿", :chongqing_organ => "重庆气矿"}.each do |k,v|
-    factory k, :class => Unirole::Organ do
-      name v
-      before(:create) do |f|
-        f.rank = Unirole::Rank.where(:name => '处级').first
+  factory :organ, class: Unirole::Organ do
+    factory :chongqing_organ do
+      name "重庆气矿"
+
+      before :create do |x|
+        x.rank = Unirole::Rank.find_or_create_by(name: '处级', seq: 10)
+      end
+      
+      after :create do |x|
+        x.children.create name: "开发科", rank: Unirole::Rank.find_or_create_by(name: '科级', seq: 20)
       end
     end 
-  end
-  
-  { :cq_kaifa_ke => ["重庆气矿", "开发科"], 
-    :kaifa_ke => ["蜀南气矿", "开发科"], 
-    :dijian_ke => ["蜀南气矿", "地建科"]}.each do |k,(chu, v)|
-    factory k,:class => Unirole::Organ do
-      name v
-      before(:create) do |f|
-        f.rank = Unirole::Rank.where(:name => '科级').first
-        f.parent = Unirole::Organ.where(:name => chu).first
-      end
-    end
-  end
 
-  {:gongcheng_team => "工程组", :zuanjin_team => "钻井组"}.each do |k,v|
-    factory k,:class => Unirole::Organ do
-      name v
-      before(:create) do |f|
-        f.rank = Unirole::Rank.where(:name => '股级').first
-        f.parent = Unirole::Organ.where(:name => '开发科', :parent_id => '蜀南气矿'.to_organ.id).first
+    factory :snqk_organ do
+      name "蜀南气矿"
+
+      before :create do |x|
+        x.rank = Unirole::Rank.find_or_create_by(name: '处级', seq: 10)
+      end
+      
+      after :create do |x|
+        x.children.create name: "开发科", rank: Unirole::Rank.find_or_create_by(name: '科级', seq: 20)
+        x.children.create name: "地建科", rank: Unirole::Rank.find_or_create_by(name: '科级', seq: 20)
+        y = x.children.first
+        y.children.create name: "工程组", rank: Unirole::Rank.find_or_create_by(name: '股级', seq: 30)
+        y.children.create name: "钻井组", rank: Unirole::Rank.find_or_create_by(name: '股级', seq: 30)
       end
     end
   end
- 
 end
