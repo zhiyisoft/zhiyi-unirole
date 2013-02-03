@@ -1,4 +1,9 @@
 zh_CN:
+  unirole:
+    membership:
+      member: 成员
+      leader: 领导
+
   mongoid:
     errors:
       models:

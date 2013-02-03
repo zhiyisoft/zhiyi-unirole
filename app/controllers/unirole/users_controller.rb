@@ -1,12 +1,12 @@
 module Unirole
   class UsersController < UniroleController
-    before_filter CASClient::Frameworks::Rails::Filter
-    load_resource :class => Unirole::User, expect: [:index]
-    authorize_resource :class => Unirole::User
+    load_and_authorize_resource class: Unirole::User
+    respond_to :html, :json, :js
 
     def index
       page = params[:page] || 1
       @users = Unirole::User.order_by(login: :asc).cache.paginate(page: page)
+      respond_with @users
     end
 
     def create

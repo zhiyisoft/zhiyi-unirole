@@ -160,6 +160,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cancan
   database_cleaner
   factory_girl_rails
   haml
