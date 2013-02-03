@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 
 FactoryGirl.define do
-  to_create {|x| x.save}
-  
   factory :membership, class: Unirole::Membership do
+
+    to_create do |x|
+      x.class.find_or_create_by(name: x.name)
+    end
+
     factory :leader do
       name "领导"
     end
