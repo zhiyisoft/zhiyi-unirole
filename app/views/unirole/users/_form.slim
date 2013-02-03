@@ -1,5 +1,5 @@
 = simple_form_for @user, url: users_path, remote: true, html: { class: 'form-vertical' } do |f|
-  = f.input :login
+  = f.input :login, readonly: (not @user.new_record?)
   = f.input :sn
   = f.input :cn
   = f.button :submit, class: 'btn-primary'

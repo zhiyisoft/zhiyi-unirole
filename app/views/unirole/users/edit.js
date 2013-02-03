@@ -1,0 +1,1 @@
+$("#new_user > form").replaceWith("<%= j render 'form' %>");

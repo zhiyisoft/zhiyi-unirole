@@ -1,5 +1,13 @@
-tr
-  td= link_to user.login, user, id: dom_id(user)
+tr id=dom_id(user)
+  td
+    a href=edit_user_path(user) data-remote='true'
+      i.icon-pencil
+    span.icon-bar
+    a href=user_path(user) data-remote="true" data-method="delete" data-confirm=t('unirole.confirm.delete', value: user.login)
+      i.icon-remove
+    
+
+  td= user.login
   td= user.name
   td
     ul

@@ -15,7 +15,4 @@
               li= a.to_s
 
   .span6
-    - if can? :resetpass, @user
-      a.btn.btn-warning href=unirole_app.resetpass_user_path(@user) = t('controllers.unirole/users.actions.resetpass')
-    span.icon-bar
     a.btn href=unirole_app.users_path = t('system.return')

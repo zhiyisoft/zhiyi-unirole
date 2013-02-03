@@ -3,6 +3,8 @@ zh_CN:
     membership:
       member: 成员
       leader: 领导
+    confirm:
+      delete: 你是否确认要删除"%{value}"?
 
   mongoid:
     errors:

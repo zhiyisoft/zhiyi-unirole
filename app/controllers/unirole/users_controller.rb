@@ -11,8 +11,7 @@ module Unirole
     end
 
     def create
-      @user = Unirole::User.create(params[:user])
-      if @user.save
+      if @user.update_attributes(params[:user])
         respond_with @user
       else
         render :new
@@ -25,6 +24,8 @@ module Unirole
     end
 
     def destroy
+      @user.delete
+      respond_with @user
     end
   end
 end
