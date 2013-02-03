@@ -49,9 +49,6 @@ zh_CN:
       organ:
         parent: 不选表示目前无上级单位
 
- 
-    placeholders:
-
   helpers:
     state:
       unirole/user:

@@ -1,0 +1,9 @@
+tr
+  td= link_to user.login, user, id: dom_id(user)
+  td= user.name
+  td
+    ul
+      - cache user do
+        - user.actors.each do |actor|
+          li= actor.to_s
+  td= t("helpers.state.unirole/user.#{user.state}")
