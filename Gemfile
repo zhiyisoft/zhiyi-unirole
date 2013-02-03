@@ -9,7 +9,7 @@ gemspec
 gem "jquery-rails"
 gem "slim"
 gem "haml"
-gem "mongoid",'2.5.1'
+gem "mongoid"
 gem "thin"
 gem "i18n"
 gem 'zhiyi-member', :git => 'git@task.zhiyisoft.com:talent/zhiyi/zhiyi-member.git'
