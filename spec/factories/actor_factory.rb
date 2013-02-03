@@ -1,12 +1,19 @@
 # -*- coding: utf-8 -*-
 
 FactoryGirl.define do
-  { snqk_leader: [:snqk_organ, :leader], 
-    kaifa_ke_leader: [:kaifa_ke, :leader],
-    kaifa_ke_member: [:kaifa_ke, :member]}.each do |k,(v,m)|
-    factory k, class: Unirole::Actor do
-      association :organ, factory: v
-      association :membership, factory: m
+  factory :snqk_actor, class: Unirole::Actor do
+    factory :snqk_leader do
+      before :create do |x|
+        x.organ = "蜀南气矿".to_organ
+        x.membership = Unirole::Membership.of("领导")
+      end
+    end
+
+    factory :kaifa_ke_leader do
+      before :create do |x|
+        x.organ = "蜀南气矿/开发科".to_organ
+        x.membership = Unirole::Membership.of("领导")
+      end
     end
   end
 end
