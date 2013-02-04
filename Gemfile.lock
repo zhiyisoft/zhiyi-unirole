@@ -168,6 +168,7 @@ DEPENDENCIES
   i18n
   jquery-rails
   mongoid (~> 3.0)
+  nested_form
   rspec-rails
   shoulda-matchers
   slim

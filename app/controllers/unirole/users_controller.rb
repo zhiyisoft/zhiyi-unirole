@@ -1,5 +1,6 @@
 module Unirole
   class UsersController < UniroleController
+
     load_and_authorize_resource class: Unirole::User
     respond_to :html, :json, :js
     layout Proc.new { |controller| controller.request.xhr? ? false : 'application' }
