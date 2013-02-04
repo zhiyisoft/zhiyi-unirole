@@ -23,6 +23,8 @@ module Unirole
     field :name
 
     has_and_belongs_to_many :actors, class_name: 'Unirole::Actor'
+    accepts_nested_attributes_for :actors
+    attr_accessible :actors_attributes
 
     state_machine :state, initial: :unregistered do 
       event :register do
