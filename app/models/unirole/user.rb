@@ -24,7 +24,6 @@ module Unirole
 
     has_and_belongs_to_many :actors, class_name: 'Unirole::Actor'
     accepts_nested_attributes_for :actors
-    attr_accessible :actors_attributes
 
     state_machine :state, initial: :unregistered do 
       event :register do
@@ -43,8 +42,11 @@ module Unirole
     validates_uniqueness_of :login
     validates_presence_of :sn, :cn, :login
 
+    before_save do |user|
+      user.name = user.sn + user.cn
+    end
+
     after_create do |u|
-      u.name = u.sn + u.cn
       um = u.class.manager
       return unless um
       return u.register if um.exist?(u.login)
@@ -53,7 +55,7 @@ module Unirole
         uid: u.login,
         sn: u.sn,
         cn: u.cn,
-        displayName: u.name,
+        displayName: (u.sn + u.cn),
         userPassword: u.login
       })
       u.register if um.exist?(u.login)
