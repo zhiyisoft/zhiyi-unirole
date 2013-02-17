@@ -1,7 +1,13 @@
 module Unirole
   class UsersController < UniroleController
+
     load_and_authorize_resource class: Unirole::User
     respond_to :html, :json, :js
+    layout Proc.new { |controller| controller.request.xhr? ? false : 'application' }
+
+    def new
+      respond_with @user
+    end
 
     def index
       page = params[:page] || 1
@@ -10,17 +16,24 @@ module Unirole
     end
 
     def create
-      @user = Unirole::User.create(params[:user])
-      return redirect_to action: :index if @user.save
-      render :new
+      if @user.update_attributes(params[:user])
+        respond_with @user
+      else
+        render :new
+      end
     end
 
     def update
-      return redirect_to action: :show, id: @user.id if @user.update_attributes(params[:user])
-      redirect_to :back
+      if @user.update_attributes(params[:user])
+        respond_with @user
+      else
+        redirect_to :back
+      end
     end
 
     def destroy
+      @user.delete
+      respond_with @user
     end
   end
 end

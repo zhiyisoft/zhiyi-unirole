@@ -1,4 +1,6 @@
-source "http://rubygems.org"
+#source "https://rubygems.org"
+#source "http://ruby.taobao.org"
+source "http://localhost:8808"
 
 # Declare your gem's dependencies in unirole.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -9,11 +11,12 @@ gemspec
 gem "jquery-rails"
 gem "slim"
 gem "haml"
-gem "mongoid",'2.5.1'
+gem "mongoid", "~> 3.0"
 gem "thin"
 gem "i18n"
 gem 'zhiyi-member', :git => 'git@task.zhiyisoft.com:talent/zhiyi/zhiyi-member.git'
 gem 'cancan'
+gem 'nested_form'
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or

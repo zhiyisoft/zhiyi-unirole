@@ -1,0 +1,9 @@
+= simple_nested_form_for @user, html: { :"data-remote" => "true" } do |f|
+  = f.input :login, readonly: (not @user.new_record?)
+  = f.input :sn
+  = f.input :cn
+  - 2.times { @user.actors.build }
+  = f.simple_fields_for :actors do |af|
+    = af.association :organ, collection: Unirole::Organ.all, include_blank: false
+    = af.association :membership, collection: Unirole::Membership.all, as: :radio_buttons
+  = f.button :submit, class: 'btn-primary'

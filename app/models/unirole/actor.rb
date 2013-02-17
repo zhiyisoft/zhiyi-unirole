@@ -12,8 +12,6 @@ module Unirole
 
     validates_uniqueness_of :organ_id, scope: [:membership_id]
 
-    scope :assignables, where(:membership.in => Unirole::Membership.assignables)
-
     def to_s
        (organ ? organ.full_name : "" )+ ":" + membership.name
     end

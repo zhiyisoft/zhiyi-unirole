@@ -1,0 +1,1 @@
+$("#working_area").html("<%= j render 'form' %>");

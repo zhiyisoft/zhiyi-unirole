@@ -1,30 +1,20 @@
-.span3
-  = render "unirole/public/navicate"
-.span9
-  .row-fluid
-      a.btn.btn-primary href=new_user_path = t('controllers.unirole/users.actions.new')
+.row-fluid
+  .span4.well#working_area
+    a href=new_user_path data-remote='true'
+      i.icon-plus-sign
+      |  新建
 
-  .row-fluid
-    table.table.table-bordered
+  .span8
+    table.table.table-bordered#users
       thead
         tr
-          th= t('simple_form.labels.unirole_user.login')
-          th= t('simple_form.labels.unirole_user.name')
-          th= t('simple_form.labels.unirole_user.actors')
-          th= t('simple_form.labels.unirole_user.state')
           th
+          th= t('simple_form.labels.user.login')
+          th= t('simple_form.labels.user.name')
+          th= t('simple_form.labels.user.actors')
+          th= t('simple_form.labels.user.state')
       - @users.each do |user|
-        tr
-          td: a href=user_path(user) = user.login
-          td= user.name
-          td
-            ul
-              - cache user do
-                - user.actors.each do |actor|
-                  li= actor.to_s
-          td= t("helpers.state.unirole/user.#{user.state}")
-          td
-            a.btn.btn-primary.btn-small href=edit_user_path(user) = t('controllers.unirole/users.actions.edit')
+        = render partial: 'user', locals: { user: user }
 
   = will_paginate @users
-
+  

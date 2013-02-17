@@ -1,40 +1,39 @@
-#require_bdependency "unirole/unirole_controller"
+# -*- coding: utf-8 -*-
 
-module Unirole
-  class RanksController < UniroleController
-    authorize_resource class: Unirole::Rank
-    def index      
-      @rank = Rank.all
-      render :layout => (not request.xhr?)
+#--
+# 版权所有，成都知一软件有限公司
+#++
+
+# 
+# 行政等级控制器
+#
+class Unirole::RanksController < ::ApplicationController
+
+  authorize_resource class: Unirole::Rank
+  respond_to :html, :json, :js
+
+  def index      
+  end
+  
+  def create
+    if @rank.update_attributes(params[:rank])
+      respond_with @rank
+    else
+      render :new
     end
-    
-    def create
-      @rank = Rank.new(params[:rank])
-      if @rank.save
-        flash[:notice] = "save success!"
-        redirect_to  :controller =>"ranks",:action=>"index"
-      else
-        flash[:notice] = "save error!"
-        redirect_to :controller =>"ranks",:action=>"index"        
-      end
-    end  
-    
-    def update
-      @rank = Rank.find(params[:id])
-      if @rank.update_attribute(params[:key],params[:value])
-        render :json=>'{"status":200,"desc":"success"}'
-      else
-        render :json =>'{"status":500,"desc":"error"}'
-      end
-    end
-    def destroy
-      @rank = Rank.find(params[:id])
-      if @rank.destroy
-        flash[:notice] = "del success!"
-      else
-        flash[:notice] = "del error!"
-      end
-      redirect_to :controller =>"ranks",:action=>"index"
+  end  
+  
+  def update
+    if @rank.update_attribute(params[:rank])
+      respond_with @rank
+    else
+      redirect_to :back
     end
   end
+
+  def destroy
+    @rank.delete
+    respond_with @rank
+  end
 end
+

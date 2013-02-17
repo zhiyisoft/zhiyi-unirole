@@ -17,5 +17,9 @@ module Unirole
     def self.default
       find_or_create_by name: default_name
     end
+
+    def self.of arg
+      where(name: arg).first
+    end
   end
 end

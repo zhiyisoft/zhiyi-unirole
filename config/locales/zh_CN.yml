@@ -3,6 +3,8 @@ zh_CN:
     membership:
       member: 成员
       leader: 领导
+    confirm:
+      delete: 你是否确认要删除"%{value}"?
 
   mongoid:
     errors:
@@ -15,42 +17,41 @@ zh_CN:
               blank: 必填项
             login:
               blank: 必填项
+              taken: 登录账号不允许重复
 
   simple_form:
     labels:
-      unirole::user: &unirole_user
+      user:
         sn: 姓
         cn: 名
         name: 姓名
         login: 登录账号
         actors: 角色
         state: 状态
-      unirole_user:
-        <<: *unirole_user
-      user:
-        <<: *unirole_user
-      unirole::membership: &unirole_membership
-        name: 身份名称
-      unirole_membership:
-        <<: *unirole_membership
       membership:
-        <<: *unirole_membership
+        name: 身份名称
       organ:
         rank: 机构等级
         name: 机构名称
         parent: 上级机构
+      actor: &labels_actor
+        organ: 组织机构
+        membership: 身份名称
+      actors:
+        <<: *labels_actor
+
+    hints:
+      user: 
+        login: 用户口令与用户账号相同，请提醒用户在首次登录后及时修改口令!
 
     placeholders:
       user: 
-        login: 用户口令与用户账号相同，请提醒用户在首次登录后及时修改口令!
+        login: 用户账号
 
 
     hints:
       organ:
         parent: 不选表示目前无上级单位
-
- 
-    placeholders:
 
   helpers:
     state:
