@@ -9,3 +9,4 @@ rdoc/*
 created.rid
 tmp/*
 *.html
+.rvmrc
