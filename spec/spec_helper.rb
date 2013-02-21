@@ -22,6 +22,7 @@ Spork.prefork do
   RSpec.configure do |config|
 
     config.mock_with :rspec
+    config.include FactoryGirl::Syntax::Methods
 
     config.before(:suite) do
       DatabaseCleaner.strategy = :truncation
@@ -37,6 +38,7 @@ Spork.prefork do
     end
   end
 end
+
 
 Spork.each_run do
   load "#{Rails.root}/config/routes.rb"

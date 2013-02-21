@@ -4,10 +4,15 @@ require 'spec_helper'
 module Unirole
   describe Actor do
     before :each do
-      [ :snqk_organ, :leader,
-        :snqk_leader, :kaifa_ke_leader ].each do |x|
-        instance_variable_set("@#{x}".to_sym, FactoryGirl.create(x))
-      end
+      chu_rank = create :chu_rank
+      ke_rank = create :ke_rank
+      leader = create :leader
+
+      @snqk_organ = create :snqk_organ, rank: chu_rank, parent: nil
+      kaifa = create :snqk_kaifa, rank: ke_rank, parent: @snqk_organ
+
+      @snqk_leader = create :snqk_leader, organ: @snqk_organ, membership: leader
+      @kaifa_ke_leader = create :snqk_kaifa_leader, organ: kaifa, membership: leader
     end
 
     it '角色名称类转为字符串' do

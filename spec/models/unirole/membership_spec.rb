@@ -6,7 +6,7 @@ module Unirole
   describe Membership do
 
     before(:each) do
-      [:leader, :member].each {|x| FactoryGirl.create x}
+      [:leader, :member].each {|x| create x}
     end
 
     it 'I18n的默认名称' do
