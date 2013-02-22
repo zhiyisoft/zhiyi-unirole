@@ -9,3 +9,6 @@ rdoc/*
 created.rid
 tmp/*
 *.html
+.rvmrc
+Gemfile.lock
+

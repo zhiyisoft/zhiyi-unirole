@@ -18,6 +18,22 @@ gem 'zhiyi-member', :git => 'git@task.zhiyisoft.com:talent/zhiyi/zhiyi-member.gi
 gem 'cancan'
 gem 'nested_form'
 
+group :test do
+  # Pretty printed test output
+  gem 'turn', :require => false
+  gem 'factory_girl_rails', :require => false
+  gem 'database_cleaner'
+  gem 'mongoid-rspec'
+  gem "capybara"
+  gem "launchy"
+  gem 'guard-spork'
+  gem 'spork'
+  gem "guard-rspec"
+  gem 'guard-livereload'
+  gem 'guard-bundler'
+  gem 'rb-fsevent'
+end
+
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing

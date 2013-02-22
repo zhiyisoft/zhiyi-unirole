@@ -3,8 +3,8 @@ require 'spec_helper'
 
 module Unirole
   describe Rank do
-    before(:each) do 
-      (@chu, @ke, @gu) = [:chu_rank, :ke_rank, :gu_rank].map {|x| FactoryGirl.create x}
+    before(:each) do
+      (@chu, @ke, @gu) = [:chu_rank, :ke_rank, :gu_rank].map {|x| create x}
     end
 
     describe "按单位等级评定某一等级是否可以成为另一等级的子等级" do
