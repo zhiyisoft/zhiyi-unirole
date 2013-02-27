@@ -8,7 +8,7 @@
     .span6
       = simple_form_for Unirole::Organ.new, html: { class: 'form-vertical' } do |f|
         = f.input :rank, collection: Unirole::Rank.all, include_blank: false
-        = f.input :parent_id, collection: Unirole::Organ.all
+        = f.input :parent_id, collection: Unirole::Organ.all, include_blank: false
         = f.input :name
         = f.button :submit, class: 'btn btn-primary'
 

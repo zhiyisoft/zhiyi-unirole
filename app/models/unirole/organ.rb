@@ -1,6 +1,9 @@
 require 'mongoid-ancestry'
 
 module Unirole
+  class OrganBypassRankException < RuntimeError
+  end
+
   class Organ
     include Mongoid::Document
     include Mongoid::Timestamps
@@ -18,7 +21,7 @@ module Unirole
 
     def validate_rank
       return unless parent
-      raise unless self.rank.member_of?(self.parent.rank)
+      raise Unirole::OrganBypassRankException unless self.rank.member_of?(self.parent.rank)
     end
 
     after_create do |o|

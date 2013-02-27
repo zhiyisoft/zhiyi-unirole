@@ -34,6 +34,7 @@ zh_CN:
         rank: 机构等级
         name: 机构名称
         parent: 上级机构
+        parent_id: 上级机构
       actor: &labels_actor
         organ: 组织机构
         membership: 身份名称
@@ -41,11 +42,11 @@ zh_CN:
         <<: *labels_actor
 
     hints:
-      user: 
+      user:
         login: 用户口令与用户账号相同，请提醒用户在首次登录后及时修改口令!
 
     placeholders:
-      user: 
+      user:
         login: 用户账号
 
 
@@ -67,9 +68,13 @@ zh_CN:
       membership:
         update: 更新
         create: 新增
+      organ:
+        create: 新建
+        update: 更新
+        edit: 编辑
 
   controllers:
-    unirole/users: 
+    unirole/users:
       actions:
         new: 新建用户
         create: 创建用户
