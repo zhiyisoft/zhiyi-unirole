@@ -13,6 +13,7 @@ class Unirole::RanksController < ::ApplicationController
   respond_to :html, :json, :js
 
   def index      
+    @ranks=Unirole::Rank.all
   end
   
   def create

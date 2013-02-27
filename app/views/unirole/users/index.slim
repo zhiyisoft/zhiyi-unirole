@@ -1,8 +1,10 @@
 .row-fluid
-  .span4.well#working_area
-    a href=new_user_path data-remote='true'
-      i.icon-plus-sign
-      |  新建
+  .span4
+    = render "unirole/public/navicate"
+    .well#working_area
+      a href=new_user_path data-remote='true'
+        i.icon-plus-sign
+        |  新建
 
   .span8
     table.table.table-bordered#users
