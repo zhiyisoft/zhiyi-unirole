@@ -1,5 +1,5 @@
 module Unirole
-  class UsersController < UniroleController
+  class UsersController < ApplicationController
 
     load_and_authorize_resource class: Unirole::User
     respond_to :html, :json, :js

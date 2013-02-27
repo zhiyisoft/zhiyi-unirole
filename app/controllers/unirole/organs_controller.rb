@@ -1,9 +1,9 @@
 #require_dependency "unirole/unirole_controller"
 
 module Unirole
-  class OrgansController < UniroleController
+  class OrgansController < ApplicationController
 
-    load_and_authorize_resource :class => Unirole::Organ 
+    load_and_authorize_resource :class => Unirole::Organ
 
     def tree
       render json: tree_of.to_json
@@ -16,7 +16,7 @@ module Unirole
         redirect_to  :controller =>"organs",:action=>"index"
       else
         flash[:notice] = "save error!"
-        redirect_to :controller =>"organs",:action=>"index"        
+        redirect_to :controller =>"organs",:action=>"index"
       end
     end
 
@@ -25,14 +25,14 @@ module Unirole
      rank = Rank.find(params[:id])
      Rank.all.each do |list|
         if list.seq !=rank.seq
-          if !list.member_of? rank              
+          if !list.member_of? rank
             Organ.where(:rank_id =>list.id).each do |idx|
               @data <<{:key => idx.id ,:value => idx.full_name}
             end
           end
         end
       end
-      
+
       render :json =>@data.to_json
     end
 

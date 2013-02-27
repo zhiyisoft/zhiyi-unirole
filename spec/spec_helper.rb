@@ -2,7 +2,7 @@ require 'rubygems'
 require 'spork'
 
 Spork.prefork do
-  ENV["RAILS_ENV"] = "test"
+  ENV["RAILS_ENV"] ||= "test"
 
   require 'mongoid'
   ENV["MONGOID_ENV"] = "test"
@@ -11,6 +11,7 @@ Spork.prefork do
   require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
   require 'rspec/rails'
+  require 'capybara/rspec'
   require "factory_girl_rails"
   require "database_cleaner"
   require 'shoulda/matchers/integrations/rspec'
@@ -43,4 +44,6 @@ end
 Spork.each_run do
   load "#{Rails.root}/config/routes.rb"
   Dir["#{Rails.root}/app/**/*.rb"].each {|f| load f}
+
+  FactoryGirl.reload
 end

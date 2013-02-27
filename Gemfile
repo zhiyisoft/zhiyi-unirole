@@ -28,6 +28,8 @@ gem "thin"
 gem "i18n"
 gem 'zhiyi-member', :git => 'git@task.zhiyisoft.com:talent/zhiyi/zhiyi-member.git'
 gem 'cancan'
+
+gem 'simple_form'
 gem 'nested_form'
 gem 'apotomo'
 
