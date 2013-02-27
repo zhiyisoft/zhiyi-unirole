@@ -1,11 +1,23 @@
-#source "https://rubygems.org"
-#source "http://ruby.taobao.org"
-source "http://localhost:8808"
-
-# Declare your gem's dependencies in unirole.gemspec.
-# Bundler will treat runtime dependencies like base dependencies, and
-# development dependencies will be added by default to the :development group.
+require 'rbconfig'
+HOST_OS = RbConfig::CONFIG['host_os']
+source 'http://ruby.taobao.org'
 gemspec
+
+gem 'rails', '>= 3.2.11'
+gem 'thin'
+
+case HOST_OS
+  when /darwin/i
+    gem 'rb-fsevent', :group => :development
+    gem 'growl', :group => :development
+  when /linux/i
+    gem 'libnotify', :group => :development
+    gem 'rb-inotify', :group => :development
+  when /mswin|windows/i
+    gem 'rb-fchange', :group => :development
+    gem 'win32console', :group => :development
+    gem 'rb-notifu', :group => :development
+end
 
 # jquery-rails is used by the dummy application
 gem "jquery-rails"
@@ -17,6 +29,7 @@ gem "i18n"
 gem 'zhiyi-member', :git => 'git@task.zhiyisoft.com:talent/zhiyi/zhiyi-member.git'
 gem 'cancan'
 gem 'nested_form'
+gem 'apotomo'
 
 group :test do
   # Pretty printed test output
@@ -33,11 +46,3 @@ group :test do
   gem 'guard-bundler'
   gem 'rb-fsevent'
 end
-
-# Declare any dependencies that are still in development here instead of in
-# your gemspec. These might include edge Rails or gems from your path or
-# Git. Remember to move these dependencies to your gemspec before releasing
-# your gem to rubygems.org.
-
-# To use debugger
-# gem 'debugger'
