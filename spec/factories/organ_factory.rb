@@ -1,33 +1,37 @@
 # -*- coding: utf-8 -*-
 
 FactoryGirl.define do
-  factory :organ, class: Unirole::Organ do
+  factory :organ, class: Unirole::Organ, aliases: [:parent] do
+
+    rank
+    parent
+
     factory :chongqing_organ do
       name "重庆气矿"
+    end
 
-      before :create do |x|
-        x.rank = Unirole::Rank.find_or_create_by(name: '处级', seq: 10)
-      end
-      
-      after :create do |x|
-        x.children.create name: "开发科", rank: Unirole::Rank.find_or_create_by(name: '科级', seq: 20)
-      end
-    end 
+    factory :chongqing_kaifa do
+      name "开发科"
+    end
 
     factory :snqk_organ do
       name "蜀南气矿"
+    end
 
-      before :create do |x|
-        x.rank = Unirole::Rank.find_or_create_by(name: '处级', seq: 10)
-      end
-      
-      after :create do |x|
-        x.children.create name: "开发科", rank: Unirole::Rank.find_or_create_by(name: '科级', seq: 20)
-        x.children.create name: "地建科", rank: Unirole::Rank.find_or_create_by(name: '科级', seq: 20)
-        y = x.children.first
-        y.children.create name: "工程组", rank: Unirole::Rank.find_or_create_by(name: '股级', seq: 30)
-        y.children.create name: "钻井组", rank: Unirole::Rank.find_or_create_by(name: '股级', seq: 30)
-      end
+    factory :snqk_kaifa do
+      name "开发科"
+    end
+
+    factory :snqk_djk do
+      name "地建科"
+    end
+
+    factory :snqk_kaifa_gc do
+      name "工程组"
+    end
+
+    factory :snqk_kaifa_zj do
+      name "钻井组"
     end
   end
 end
