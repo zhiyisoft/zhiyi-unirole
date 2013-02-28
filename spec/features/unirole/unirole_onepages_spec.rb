@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe '独立页面测试' do
 
-  describe '显示组织机构' do
+  describe '显示组织机构', js: true do
     before(:each) do
       create :snqk_organ, rank: (create :chu_rank), parent: nil
     end

@@ -20,6 +20,17 @@ Spork.prefork do
   ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), '../')
   Dir[File.join(ENGINE_RAILS_ROOT, "spec/support/**/*.rb")].each {|f| require f }
 
+  require 'capybara/poltergeist'
+  Capybara.javascript_driver = :poltergeist
+
+  #Capybara.default_driver = :selenium
+  #Capybara.app_host = "http://localhost:3000"
+  #Capybara.default_wait_time = 5
+
+  #Capybara.register_driver :selenium do |app|
+  #  Capybara::Selenium::Driver.new(app, :browser => :firefox) # chrome)
+  #end
+
 
   RSpec.configure do |config|
 

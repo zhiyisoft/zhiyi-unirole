@@ -1,5 +1,6 @@
 require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
+#source 'http://localhost:8808'
 source 'http://ruby.taobao.org'
 gemspec
 
@@ -45,11 +46,13 @@ group :test do
   gem 'database_cleaner'
   gem 'mongoid-rspec'
   gem "capybara"
+  gem 'poltergeist'
   gem "launchy"
   gem 'guard-spork'
   gem 'spork'
   gem "guard-rspec"
   gem 'guard-livereload'
   gem 'guard-bundler'
+  # gem 'selenium'
   gem 'simplecov'
 end
