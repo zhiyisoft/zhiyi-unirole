@@ -31,12 +31,17 @@ gem 'cancan'
 
 gem 'simple_form'
 gem 'nested_form'
-gem 'apotomo'
+gem 'cells'
+
+group :development, :test do
+  gem 'foreman'
+end
 
 group :test do
-  # Pretty printed test output
   gem 'turn', :require => false
+  gem 'rspec-rails'
   gem 'factory_girl_rails', :require => false
+  gem 'turnip'
   gem 'database_cleaner'
   gem 'mongoid-rspec'
   gem "capybara"
@@ -46,5 +51,5 @@ group :test do
   gem "guard-rspec"
   gem 'guard-livereload'
   gem 'guard-bundler'
-  gem 'rb-fsevent'
+  gem 'simplecov'
 end

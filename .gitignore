@@ -12,3 +12,5 @@ tmp/*
 .rvmrc
 Gemfile.lock
 
+Procfile
+/coverage/

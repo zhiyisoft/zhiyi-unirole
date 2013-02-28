@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'spork'
+require 'simplecov'
 
 Spork.prefork do
   ENV["RAILS_ENV"] ||= "test"
@@ -11,6 +12,7 @@ Spork.prefork do
   require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
   require 'rspec/rails'
+  require 'turnip'
   require 'capybara/rspec'
   require "factory_girl_rails"
   require "database_cleaner"
@@ -44,6 +46,8 @@ end
 Spork.each_run do
   load "#{Rails.root}/config/routes.rb"
   Dir["#{Rails.root}/app/**/*.rb"].each {|f| load f}
+  Dir.glob("spec/steps/**/*steps.rb") { |f| load f, true }
 
   FactoryGirl.reload
+  SimpleCov.start
 end

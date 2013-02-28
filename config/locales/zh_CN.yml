@@ -5,6 +5,7 @@ zh_CN:
       leader: 领导
     confirm:
       delete: 你是否确认要删除"%{value}"?
+    title: 集中用户角色管理
 
   mongoid:
     errors:
@@ -41,11 +42,11 @@ zh_CN:
         <<: *labels_actor
 
     hints:
-      user: 
+      user:
         login: 用户口令与用户账号相同，请提醒用户在首次登录后及时修改口令!
 
     placeholders:
-      user: 
+      user:
         login: 用户账号
 
 
@@ -69,7 +70,7 @@ zh_CN:
         create: 新增
 
   controllers:
-    unirole/users: 
+    unirole/users:
       actions:
         new: 新建用户
         create: 创建用户
