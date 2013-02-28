@@ -16,7 +16,6 @@ Spork.prefork do
   require 'capybara/rspec'
   require "factory_girl_rails"
   require "database_cleaner"
-  require 'shoulda/matchers/integrations/rspec'
 
   ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), '../')
   Dir[File.join(ENGINE_RAILS_ROOT, "spec/support/**/*.rb")].each {|f| require f }
@@ -26,6 +25,7 @@ Spork.prefork do
 
     config.mock_with :rspec
     config.include FactoryGirl::Syntax::Methods
+    config.include Unirole::Engine.routes.url_helpers
 
     config.before(:suite) do
       DatabaseCleaner.strategy = :truncation
