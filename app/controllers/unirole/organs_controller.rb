@@ -5,6 +5,9 @@ module Unirole
     load_and_authorize_resource :class => Unirole::Organ
     respond_to :html, :json, :js
 
+    def show 
+
+    end
     def index
       if params[:tree] then
         render json: tree_of.to_json
