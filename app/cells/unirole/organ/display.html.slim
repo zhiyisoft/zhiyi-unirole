@@ -1,4 +1,2 @@
-h1
-  Organ#display
-p
-  Find me in app/cells/unirole/organ/display.html.slim
+- @organs.each do |organ|
+  p= organ.name

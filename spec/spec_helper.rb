@@ -46,7 +46,6 @@ end
 Spork.each_run do
   load "#{Rails.root}/config/routes.rb"
   Dir["#{Rails.root}/app/**/*.rb"].each {|f| load f}
-  Dir.glob("spec/steps/**/*steps.rb") { |f| load f, true }
 
   FactoryGirl.reload
   SimpleCov.start
