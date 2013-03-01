@@ -33,6 +33,7 @@ gem 'cancan'
 gem 'simple_form'
 gem 'nested_form'
 gem 'cells'
+gem 'apotomo'
 
 group :development, :test do
   gem 'foreman'

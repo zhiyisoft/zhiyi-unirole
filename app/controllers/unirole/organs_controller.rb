@@ -2,8 +2,13 @@
 
 module Unirole
   class OrgansController < ApplicationController
+    include Apotomo::Rails::ControllerMethods
     load_and_authorize_resource :class => Unirole::Organ
     respond_to :html, :json, :js
+
+    has_widgets do |root|
+      root << widget('unirole/user', :user)
+    end
 
     def index
       if params[:tree] then
