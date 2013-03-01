@@ -1,5 +1,3 @@
-#require_dependency "unirole/unirole_controller"
-
 module Unirole
   class OrgansController < ApplicationController
     include Apotomo::Rails::ControllerMethods
@@ -7,7 +5,7 @@ module Unirole
     respond_to :html, :json, :js
 
     has_widgets do |root|
-      root << widget('unirole/user', :user)
+      root << widget('unirole/organ', :organ)
     end
 
     def index
