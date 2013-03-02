@@ -2,4 +2,10 @@
   = f.input :login, readonly: (not user.new_record?)
   = f.input :sn
   = f.input :cn
+  = f.simple_fields_for :actors do |af|
+    .row-fluid.hide
+      .span8
+        = af.association :organ, collection: Unirole::Organ.all, readonly: true, disabled: true
+      .span4
+        = af.association :membership, collection: Unirole::Membership.all, include_blank: false
   = f.button :submit, class: 'btn-primary'

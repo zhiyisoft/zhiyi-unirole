@@ -15,6 +15,9 @@ module Unirole
 
 
     def new
+      @user = Unirole::User.new
+      organ = params[:organ_id] ? Unirole::Organ.find(params[:organ_id]) : nil
+      @user.actors.build(organ: organ, membership: Unirole::Membership.default)
       respond_with @user
     end
 

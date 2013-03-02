@@ -6,7 +6,6 @@ class Unirole::OrganCell < Cell::Rails
 
   def title(args)
     @organ = args[:organ]
-    p '-------', @organ
     return render if @organ
     render view: :blank
   end
