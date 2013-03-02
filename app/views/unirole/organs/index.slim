@@ -3,4 +3,4 @@
 .span9
   .row-fluid
     .span6
-      = render_widget :organ, :display
+      = render_cell 'unirole/organ', :tree, :organs => Unirole::Organ.roots

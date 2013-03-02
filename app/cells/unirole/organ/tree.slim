@@ -1,0 +1,11 @@
+#organ_tree
+
+javascript:
+  $('#organ_tree').tree( { data: #{@tree} } );
+  $('#organ_tree').bind(
+    'tree.click',
+    function(event) {
+      var node = event.node;
+      $.ajax({url: node.url});
+    }
+  );
