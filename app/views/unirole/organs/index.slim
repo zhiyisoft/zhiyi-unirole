@@ -1,6 +1,5 @@
-= t('unirole.title')
-
-.span9
-  .row-fluid
-    .span6
-      = render_cell 'unirole/organ', :tree, :organs => Unirole::Organ.roots
+.row-fluid
+  .span4#organs
+    = render_cell 'unirole/organ', :tree, :organs => Unirole::Organ.roots
+  .span8#users
+    = render_cell 'unirole/user', :display, :organ => nil

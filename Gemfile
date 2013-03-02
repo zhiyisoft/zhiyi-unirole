@@ -30,10 +30,14 @@ gem "i18n"
 gem 'zhiyi-member', :git => 'git@task.zhiyisoft.com:talent/zhiyi/zhiyi-member.git'
 gem 'cancan'
 
+gem "will_paginate_mongoid"
 gem 'simple_form'
 gem 'nested_form'
 gem 'cells'
-gem 'apotomo'
+
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails'
+gem 'bootstrap-will_paginate'
+gem 'bootstrap_helper'
 
 group :development, :test do
   gem 'foreman'

@@ -1,4 +1,5 @@
 class Unirole::OrganCell < Cell::Rails
+  # include ActionController::UrlFor
 
   def display
     @organs = Unirole::Organ.all
@@ -15,7 +16,8 @@ class Unirole::OrganCell < Cell::Rails
     nodes = data.respond_to?(:children) ? data.children : data
     nodes.map do |node|
       { name: node.name,
-        id: node.id
+        id: node.id,
+        url: '/unirole/users'
       }.merge(node.has_children? ? {children: make_tree(node)} : {})
     end
   end
