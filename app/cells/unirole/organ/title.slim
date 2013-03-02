@@ -1,2 +1,12 @@
-h4= @organ.name
-hr
+.page-header
+  .row-fluid
+    .pull-right
+      h4= @organ.name
+    a.btn-link.btn-small href="#dialog" data-url="/unirole/users/new" data-toggle="modal" = t('controllers.unirole/users.actions.new')
+
+#dialog.modal.hide.fade tabindex="-1" role="dialog"
+
+javascript:
+  $("a[href=#dialog]").click( function() {
+    $("#dialog").load($(this).attr("data-url"));
+  });

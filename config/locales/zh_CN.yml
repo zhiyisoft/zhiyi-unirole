@@ -6,6 +6,8 @@ zh_CN:
     confirm:
       delete: 你是否确认要删除"%{value}"?
     title: 集中用户角色管理
+    command:
+      new: 新建
 
   mongoid:
     errors:
