@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'mongoid-ancestry'
 
 module Unirole
@@ -28,6 +29,12 @@ module Unirole
     def full_name
       return name unless parent
       parent.full_name + "/" + name
+    end
+
+    ##
+    # 列出可以成为该部门下属的单位等级
+    def sub_ranks
+      Unirole::Rank.gt(seq: rank.seq)
     end
 
     def users

@@ -70,6 +70,9 @@ zh_CN:
       membership:
         update: 更新
         create: 新增
+      organ:
+        create: 创建
+
 
   controllers:
     unirole/users:
@@ -88,6 +91,8 @@ zh_CN:
         index: 身份管理
     unirole/organs:
       actions:
+        new: 新增部门
+        create: 创建部门
         index: 部门管理
 
   views:

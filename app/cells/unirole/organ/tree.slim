@@ -1,7 +1,11 @@
 #organ_tree
 
 javascript:
-  $('#organ_tree').tree( { data: #{@tree} } );
+  $('#organ_tree').tree(
+    { data: #{@tree},
+    autoOpen: 0,
+    selectable: false } );
+
   $('#organ_tree').bind(
     'tree.click',
     function(event) {

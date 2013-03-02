@@ -23,7 +23,9 @@ class Unirole::UserCell < Cell::Rails
     render
   end
 
-  def nav
+  def nav(args)
+    @organ = args[:organ]
+    render
   end
 
   def show(args)

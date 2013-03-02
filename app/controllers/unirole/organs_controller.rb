@@ -2,13 +2,14 @@ module Unirole
   class OrgansController < ApplicationController
     load_and_authorize_resource :organ, class: Unirole::Organ
     respond_to :html, :json, :js
+    layout Proc.new { |controller| controller.request.xhr? ? false : 'application' }
 
     def index
-      if params[:tree] then
-        render json: tree_of.to_json
-      else
-        respond_with @organs
-      end
+      respond_with @organs
+    end
+
+    def new
+      @parent = params[:parent_id] ? Unirole::Organ.find(params[:parent_id]) : nil
     end
 
     def create
@@ -19,16 +20,6 @@ module Unirole
       else
         flash[:notice] = "save error!"
         redirect_to :controller => "organs", :action => "index"
-      end
-    end
-
-    private
-    def tree_of node=nil
-      organs = node.nil? ? Unirole::Organ.roots : node.children
-      organs.map do |organ|
-        { name: organ.name,
-          id: organ.id
-        }.merge(organ.has_children? ? {children: tree_of(organ)} : {})
       end
     end
   end

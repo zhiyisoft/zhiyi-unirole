@@ -1,0 +1,5 @@
+.modal-header
+  h4= t('controllers.unirole/organs.actions.new')
+
+.modal-body
+  = render view: :form, locals: { organ: @organ, parent: @parent }
