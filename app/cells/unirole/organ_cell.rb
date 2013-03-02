@@ -1,9 +1,14 @@
 class Unirole::OrganCell < Cell::Rails
-  # include ActionController::UrlFor
-
   def display
     @organs = Unirole::Organ.all
     render
+  end
+
+  def title(args)
+    @organ = args[:organ]
+    p '-------', @organ
+    return render if @organ
+    render view: :blank
   end
 
   def tree(args)
@@ -17,7 +22,7 @@ class Unirole::OrganCell < Cell::Rails
     nodes.map do |node|
       { name: node.name,
         id: node.id,
-        url: '/unirole/users'
+        url: "/unirole/users?page=1&organ_id=#{node.id}"
       }.merge(node.has_children? ? {children: make_tree(node)} : {})
     end
   end

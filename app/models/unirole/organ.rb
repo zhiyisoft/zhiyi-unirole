@@ -31,7 +31,7 @@ module Unirole
     end
 
     def users
-      actors.where(membership_id: Membership.default.id).map {|x| x.users}.flatten.uniq
+      actors.map {|x| x.users}.flatten.uniq
     end
 
     def self.departments

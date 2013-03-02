@@ -1,0 +1,9 @@
+h5= @user.name
+ul
+  - @user.actors.each do |actor|
+    li= actor.to_s
+a href="/unirole/users/#{@user.id}/edit" data-remote='true'
+  i.icon-pencil
+span.icon-bar
+a href="/unirole/users/#{@user.id}" data-remote="true" data-method="delete" data-confirm=t('unirole.confirm.delete', value: @user.login)
+  i.icon-remove

@@ -1,9 +1,15 @@
-.row-fluid
+.row_fluid
+  .span10
+    = render_cell 'unirole/user', :display, organ: @organ
+  .span2
+    = render_cell 'unirole/user', :nav
+
+/!
+  .row-fluid
   .span4.well#working_area
     a href=new_user_path data-remote='true'
       i.icon-plus-sign
       |  新建
-
   .span8
     table.table.table-bordered#users
       thead
@@ -15,6 +21,4 @@
           th= t('simple_form.labels.user.state')
       - @users.each do |user|
         = render partial: 'user', locals: { user: user }
-
   = will_paginate @users
-  
