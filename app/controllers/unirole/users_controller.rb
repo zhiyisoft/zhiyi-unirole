@@ -23,7 +23,8 @@ module Unirole
 
 
     def create
-      if @user.update_attributes(params[:user])
+      @user = Unirole::User.create!(params[:user])
+      if @user.save
         respond_with @user
       else
         render :new

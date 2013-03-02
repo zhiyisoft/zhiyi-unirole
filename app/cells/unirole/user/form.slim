@@ -5,7 +5,7 @@
   = f.simple_fields_for :actors do |af|
     .row-fluid.hide
       .span8
-        = af.association :organ, collection: Unirole::Organ.all, readonly: true, disabled: true
+        = af.association :organ, collection: Unirole::Organ.all
       .span4
-        = af.association :membership, collection: Unirole::Membership.all, include_blank: false
+        = af.association :membership, collection: Unirole::Membership.all
   = f.button :submit, class: 'btn-primary'
