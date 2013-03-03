@@ -1,5 +1,5 @@
 .row-fluid
   .span3#organs
     = render_cell 'unirole/organ', :tree, :organs => Unirole::Organ.roots
-  .span9#users
+  .span9#organ_users
     = render_cell 'unirole/user', :display, :organ => nil
