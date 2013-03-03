@@ -5,4 +5,8 @@ class Unirole::ActorCell < Cell::Rails
     render
   end
 
+  def display_with_delete(args)
+    @user = args[:user]
+    render
+  end
 end

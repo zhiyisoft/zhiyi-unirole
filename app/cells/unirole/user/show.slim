@@ -8,5 +8,6 @@ div id="#{dom_id @user}"
         = render view: :nav, locals: { user: @user }
       hr
 
-    .span8.actors
-      = render_cell 'unirole/actor', :display, user: @user
+    .span8
+      .actors
+        = render_cell 'unirole/actor', :display, user: @user

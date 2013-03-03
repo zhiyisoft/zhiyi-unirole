@@ -1,0 +1,7 @@
+ul
+  - @user.actors.each do |actor|
+    li id="#{dom_id actor}"
+      span= actor.to_s
+      span.icon-bar
+      a href="/unirole/actors/#{actor.id}?user_id=#{@user.id}" data-remote="true" data-method="delete"
+        i.icon-trash
