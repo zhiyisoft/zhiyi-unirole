@@ -1,22 +1,30 @@
 module Unirole
-  class UsersController < UniroleController
-
+  class UsersController < ApplicationController
     load_and_authorize_resource class: Unirole::User
     respond_to :html, :json, :js
     layout Proc.new { |controller| controller.request.xhr? ? false : 'application' }
 
-    def new
-      respond_with @user
-    end
-
     def index
-      page = params[:page] || 1
-      @users = Unirole::User.order_by(login: :asc).cache.paginate(page: page)
+      @organ = params[:organ_id] ? Unirole::Organ.find(params[:organ_id]) : nil
+      if params[:page]
+        page = params[:page]
+        @users = Unirole::User.order_by(login: :asc).cache.paginate(page: page)
+      end
       respond_with @users
     end
 
+
+    def new
+      @user = Unirole::User.new
+      organ = params[:organ_id] ? Unirole::Organ.find(params[:organ_id]) : nil
+      @user.actors.build(organ: organ, membership: Unirole::Membership.default)
+      respond_with @user
+    end
+
+
     def create
-      if @user.update_attributes(params[:user])
+      @user = Unirole::User.create!(params[:user])
+      if @user.save
         respond_with @user
       else
         render :new

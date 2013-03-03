@@ -13,7 +13,6 @@ module Unirole
       @@manager = klass.instance_of?(Class) ? klass : klass.to_s.constantize
     end
 
-
     include Mongoid::Document
     include Mongoid::Timestamps
 
@@ -25,7 +24,15 @@ module Unirole
     has_and_belongs_to_many :actors, class_name: 'Unirole::Actor'
     accepts_nested_attributes_for :actors
 
-    state_machine :state, initial: :unregistered do 
+    def actors_attributes=(attrs)
+      attrs.each do |_, attr|
+        unless actors.where(attr).first
+          actors << Unirole::Actor.find_or_create_by(attr)
+        end
+      end
+    end
+
+    state_machine :state, initial: :unregistered do
       event :register do
         transition [:unregistered] => :actived
       end

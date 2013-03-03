@@ -1,0 +1,10 @@
+.well.well-small
+  .row-fluid
+    .span1
+    .span10
+      = simple_form_for @actor, html: { "data-remote" => "true" } do |f|
+        = f.association :organ, collection: Unirole::Organ.all, label_method: :full_name, include_blank: false
+        = f.association :membership, collection: Unirole::Membership.all, include_blank: false
+        .hide
+          = f.association :users, collection: [@user], include_blank: false
+        = f.button :submit, class: 'btn-primary'

@@ -1,18 +1,19 @@
-.row-fluid
-  .span6
-    table.table.table-hover
-      tr
-        th= t('simple_form.labels.user.login')
-        td= @user.login
-      tr
-        th= t('simple_form.labels.user.name')
-        td= @user.name
-      tr
-        th= t('simple_form.labels.user.actors')
-        td
-          ul
-            - @user.actors.each do |a|
-              li= a.to_s
+div id=#{dom_id @user}
+  .row-fluid
+    .span6
+      table.table.table-hover
+        tr
+          th= t('simple_form.labels.user.login')
+          td= @user.login
+        tr
+          th= t('simple_form.labels.user.name')
+          td= @user.name
+        tr
+          th= t('simple_form.labels.user.actors')
+          td
+            ul
+              - @user.actors.each do |a|
+                li= a.to_s
 
-  .span6
-    a.btn href=unirole_app.users_path = t('system.return')
+    .span6
+      a.btn href=unirole_app.users_path = t('system.return')

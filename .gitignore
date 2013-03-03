@@ -12,3 +12,7 @@ tmp/*
 .rvmrc
 Gemfile.lock
 
+Procfile
+/coverage/
+
+.sass-cache

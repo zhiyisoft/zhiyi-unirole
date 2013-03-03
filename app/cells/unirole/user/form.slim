@@ -1,0 +1,11 @@
+= simple_form_for user, html: { "data-remote" => "true" } do |f|
+  = f.input :login, readonly: (not user.new_record?)
+  = f.input :sn
+  = f.input :cn
+  = f.simple_fields_for :actors do |af|
+    .row-fluid.hide
+      .span8
+        = af.association :organ, collection: Unirole::Organ.all
+      .span4
+        = af.association :membership, collection: Unirole::Membership.all
+  = f.button :submit, class: 'btn-primary'

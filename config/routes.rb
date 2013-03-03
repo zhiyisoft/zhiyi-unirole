@@ -1,5 +1,6 @@
-Unirole::Engine.routes.draw do 
-  root :to => 'dashboard#index'
+Unirole::Engine.routes.draw do
+  root to: 'organs#index'
+
   resources :ranks
   resources :organs
   resources :memberships

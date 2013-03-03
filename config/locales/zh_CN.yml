@@ -5,6 +5,9 @@ zh_CN:
       leader: 领导
     confirm:
       delete: 你是否确认要删除"%{value}"?
+    title: 集中用户角色管理
+    command:
+      new: 新建
 
   mongoid:
     errors:
@@ -72,6 +75,8 @@ zh_CN:
         create: 新建
         update: 更新
         edit: 编辑
+      actor:
+        create: 增加
 
   controllers:
     unirole/users:
@@ -90,7 +95,9 @@ zh_CN:
         index: 身份管理
     unirole/organs:
       actions:
-        index: 部门管理
+        new: 新增部门
+        create: 创建部门
+        index: 组织机构
 
   views:
     unirole/navicates:

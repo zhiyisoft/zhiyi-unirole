@@ -1,0 +1,13 @@
+div id="#{dom_id @user}"
+  .row-fluid
+    .span4
+      .well.well-small
+        h5
+          = @user.name
+          small= " (#{@user.login})"
+        = render view: :nav, locals: { user: @user }
+      hr
+
+    .span8
+      .actors
+        = render_cell 'unirole/actor', :display, user: @user

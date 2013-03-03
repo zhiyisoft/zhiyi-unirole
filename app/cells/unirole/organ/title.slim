@@ -1,0 +1,11 @@
+.page-header
+  .row-fluid
+    .pull-right
+      h4= @organ.name
+
+#dialog.modal.hide.fade tabindex="-1" role="dialog"
+
+javascript:
+  $("a[href=#dialog]").click( function() {
+    $("#dialog").load($(this).attr("data-url"));
+  });

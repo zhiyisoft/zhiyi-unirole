@@ -1,0 +1,5 @@
+.modal-header
+  h4= t('controllers.unirole/users.actions.new')
+
+.modal-body
+  = render view: :form, locals: { user: @user }

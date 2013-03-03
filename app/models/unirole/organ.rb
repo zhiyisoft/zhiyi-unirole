@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'mongoid-ancestry'
 
 module Unirole
@@ -33,8 +34,14 @@ module Unirole
       parent.full_name + "/" + name
     end
 
+    ##
+    # 列出可以成为该部门下属的单位等级
+    def sub_ranks
+      Unirole::Rank.gt(seq: rank.seq)
+    end
+
     def users
-      actors.where(membership_id: Membership.default.id).map {|x| x.users}.flatten.uniq
+      actors.map {|x| x.users}.flatten.uniq
     end
 
     def self.departments

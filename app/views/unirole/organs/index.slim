@@ -1,17 +1,5 @@
-.span3
-  = render "unirole/public/navicate"
-.span9
-  .row-fluid
-    .span6
-      #organ-tree
-
-    .span6
-      = simple_form_for Unirole::Organ.new, html: { class: 'form-vertical' } do |f|
-        = f.input :rank, collection: Unirole::Rank.all, include_blank: false
-        = f.input :parent_id, collection: Unirole::Organ.all, include_blank: false
-        = f.input :name
-        = f.button :submit, class: 'btn btn-primary'
-
-
-  javascript:
-    $('#organ-tree').tree( { dataUrl: '/unirole/organs/tree.json', autoOpen: 0 } )
+.row-fluid
+  .span3#organs
+    = render_cell 'unirole/organ', :tree, :organs => Unirole::Organ.roots
+  .span9#organ_users
+    = render_cell 'unirole/user', :display, :organ => nil

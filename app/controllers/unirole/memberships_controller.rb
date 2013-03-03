@@ -1,20 +1,20 @@
 #require_bdependency "unirole/unirole_controller"
 
 module Unirole
-  class MembershipsController < UniroleController
-    load_and_authorize_resource :class => Unirole::Membership   
+  class MembershipsController < ApplicationController
+    load_and_authorize_resource :class => Unirole::Membership
 
-    def create      
+    def create
       @membership = Membership.new(params[:membership])
       if @membership.save
         flash[:notice] = "save success!"
         redirect_to  :controller =>"memberships",:action=>"index"
       else
         flash[:notice] = "save error!"
-        redirect_to :controller =>"memberships",:action=>"index"        
+        redirect_to :controller =>"memberships",:action=>"index"
       end
-    end  
-    
+    end
+
     def update
       @membership = Membership.find(params[:id])
       if @membership.update_attribute(params[:key],params[:value])

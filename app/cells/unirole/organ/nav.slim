@@ -1,0 +1,7 @@
+.row-fluid
+  .well.pull-right
+    ul.nav.nav-list.nav-stacked data-spy="affix" data-offset-top="200"
+      li
+        a.btn.btn-link.btn-small href="#dialog" data-url="/unirole/users/new?organ_id=#{@organ.id}" data-toggle="modal" = t('controllers.unirole/users.actions.new')
+      li
+        a.btn.btn-link.btn-small href="#dialog" data-url="/unirole/organs/new?parent_id=#{@organ.id}" data-toggle="modal" = t('controllers.unirole/organs.actions.new')
