@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require "cell/rails/helper_api"
 
 
@@ -23,6 +24,8 @@ class Unirole::OrganCell < Cell::Rails
     render view: :blank
   end
 
+  ##
+  # 组织机构树
   def tree(args)
     @tree = (make_tree args[:organs]).to_json.html_safe
     render
@@ -31,6 +34,13 @@ class Unirole::OrganCell < Cell::Rails
   def new(args)
     @parent = args[:parent]
     @organ = Unirole::Organ.new(parent: @parent)
+    render
+  end
+
+  ##
+  # 与一个组织机构相关的菜单导航条
+  def nav(args)
+    @organ = args[:organ]
     render
   end
 

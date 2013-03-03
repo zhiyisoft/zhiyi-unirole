@@ -2,13 +2,16 @@
 
 module Unirole
   class ActorsController < ApplicationController
-    respond_to :html, :json
-    load_and_authorize_resource :class => Unirole::Actor
+    respond_to :html, :json, :js
+    load_and_authorize_resource class: Unirole::Actor
+    layout Proc.new { |controller| controller.request.xhr? ? false : 'application' }
 
     def index
-      respond_with @actors do |f|
-        f.json { render json: @actors }
+      @user = params[:user_id] ? Unirole::User.find(params[:user_id]) : nil
+      if @user
+        @actors = @user.actors
       end
+      respond_with @actors
     end
 
     def create

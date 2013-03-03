@@ -5,14 +5,8 @@ div id="#{dom_id @user}"
         h5
           = @user.name
           small= " (#{@user.login})"
-        a.btn.btn-small href="/unirole/users/#{@user.id}/edit" data-remote='true'
-          i.icon-pencil
-        span.icon-bar
-        a.btn.btn-small href="/unirole/users/#{@user.id}" data-remote="true" data-method="delete" data-confirm=t('unirole.confirm.delete', value: @user.login)
-          i.icon-remove
+        = render view: :nav, locals: { user: @user }
       hr
 
-    .span8
-      ul
-        - @user.actors.each do |actor|
-          li= actor.to_s
+    .span8.actors
+      = render_cell 'unirole/actor', :display, user: @user
