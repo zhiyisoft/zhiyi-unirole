@@ -1,17 +1,18 @@
-.row-fluid
-  .span4
-    .well.well-small
-      h5
-        = @user.name
-        small= " (#{@user.login})"
-      a.btn.btn-small href="/unirole/users/#{@user.id}/edit" data-remote='true'
-        i.icon-pencil
-      span.icon-bar
-      a.btn.btn-small href="/unirole/users/#{@user.id}" data-remote="true" data-method="delete" data-confirm=t('unirole.confirm.delete', value: @user.login)
-        i.icon-remove
-    hr
+div id="#{dom_id @user}"
+  .row-fluid
+    .span4
+      .well.well-small
+        h5
+          = @user.name
+          small= " (#{@user.login})"
+        a.btn.btn-small href="/unirole/users/#{@user.id}/edit" data-remote='true'
+          i.icon-pencil
+        span.icon-bar
+        a.btn.btn-small href="/unirole/users/#{@user.id}" data-remote="true" data-method="delete" data-confirm=t('unirole.confirm.delete', value: @user.login)
+          i.icon-remove
+      hr
 
-  .span8
-    ul
-      - @user.actors.each do |actor|
-        li= actor.to_s
+    .span8
+      ul
+        - @user.actors.each do |actor|
+          li= actor.to_s

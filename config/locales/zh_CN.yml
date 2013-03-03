@@ -37,6 +37,7 @@ zh_CN:
         rank: 机构等级
         name: 机构名称
         parent: 上级机构
+        parent_id: 上级机构
       actor: &labels_actor
         organ: 组织机构
         membership: 身份名称
@@ -93,7 +94,7 @@ zh_CN:
       actions:
         new: 新增部门
         create: 创建部门
-        index: 部门管理
+        index: 组织机构
 
   views:
     unirole/navicates:
