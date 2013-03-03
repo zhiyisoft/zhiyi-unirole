@@ -13,13 +13,11 @@ module Unirole
     end
 
     def create
-      @organs = Organ.new(params[:organ])
-      if @organs.save
-        flash[:notice] = "save success!"
-        redirect_to  :controller => "organs", :action => "index"
+      @organ = Unirole::Organ.create(params[:organ])
+      if @organ.save
+        respond_with @organ
       else
-        flash[:notice] = "save error!"
-        redirect_to :controller => "organs", :action => "index"
+        render :new
       end
     end
   end

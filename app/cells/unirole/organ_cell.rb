@@ -38,10 +38,14 @@ class Unirole::OrganCell < Cell::Rails
   def make_tree data=[]
     nodes = data.respond_to?(:children) ? data.children : data
     nodes.map do |node|
-      { name: node.name,
+      tree_node(node).merge(node.has_children? ? {children: make_tree(node)} : {})
+    end
+  end
+
+  def tree_node node
+    { name: node.name,
         id: node.id,
         url: "/unirole/users?page=1&organ_id=#{node.id}"
-      }.merge(node.has_children? ? {children: make_tree(node)} : {})
-    end
+    }
   end
 end
