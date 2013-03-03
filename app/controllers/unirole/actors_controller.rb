@@ -3,7 +3,7 @@
 module Unirole
   class ActorsController < ApplicationController
     respond_to :html, :json, :js
-    load_and_authorize_resource class: Unirole::Actor
+    load_and_authorize_resource class: Unirole::Actor, expect: [:create]
     layout Proc.new { |controller| controller.request.xhr? ? false : 'application' }
     before_filter :find_user
 
@@ -15,6 +15,10 @@ module Unirole
     end
 
     def create
+      user_id = params[:actor]["user_ids"].delete_if(&:nil?).first
+      @user = Unirole::User.find(user_id)
+      @actor = Unirole::Actor.find_or_create_by(organ_id: params[:actor]["organ_id"], membership_id: params[:actor]["membership_id"])
+      @user.actors << @actor
       respond_with @actor
     end
 

@@ -5,3 +5,5 @@ ul
       span.icon-bar
       a href="/unirole/actors/#{actor.id}?user_id=#{@user.id}" data-remote="true" data-method="delete"
         i.icon-trash
+
+= render_cell 'unirole/actor', :new, user: @user

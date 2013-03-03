@@ -73,6 +73,8 @@ zh_CN:
         create: 新增
       organ:
         create: 创建
+      actor:
+        create: 增加
 
 
   controllers:
