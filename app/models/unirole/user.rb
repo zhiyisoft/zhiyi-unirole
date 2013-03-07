@@ -1,7 +1,58 @@
 # -*- coding: utf-8 -*-
 require 'state_machine'
 
+
 module Unirole
+
+  ##
+  # = 用户管理
+  #
+  # == 挂载外接账号管理器
+  # 目前可以支持LDAP账号管理，配置方法如下：
+  #
+  # === 添加 Gemfile
+  # 在 Rails App中的Gemfile加上一行：
+  #    gem 'zhiyi-member', :git => 'git@task.zhiyisoft.com:talent/zhiyi/zhiyi-member.git'
+  #
+  # === 配置启动器
+  # 在 Rails App中加入文件： #{RAILS_ROOT}/config/initializers/user_manager.rb，
+  # 文件内容如下：
+  #
+  #    # Load the user manager
+  #    Zhiyi::Member.load("#{Rails.root.to_s}/config/ldap.yaml")
+  #
+  #    require 'unirole/user'
+  #    Unirole::User.manager = Zhiyi::Member::User
+  #
+  # === 配置LDAP
+  # 添加LDAP配置文件，放置在上述位置：#{RAILS_ROOT}/config/ldap.yaml，
+  # 文件内容格式如下：
+  #   host: repos.zhiyisoft.com
+  #   port: 389
+  #   base:
+  #     base: dc=soatour,dc=org
+  #     person: ou=people,dc=soatour,dc=org
+  #   attr:
+  #     - displayName
+  #     - uid
+  #     - sn
+  #     - cn
+  #     - userPassword
+  #   objectclass:
+  #     - inetOrgPerson
+  #     - organizationalPerson
+  #     - top
+  #     - person
+  #   bind:
+  #     dn: cn=admin,dc=soatour,dc=org
+  #     passwd: XXXXX
+  # 以上 dc=soatour,dc=org 等应根据实际需要变更，passwd 也应根据实际情况变更
+  #
+  # === 使用
+  # bundle 后重新启动 Rails，无需在代码中增加任何操作，即可挂载到LDAP中，其效果如下：
+  # - 在新增用户时，如果LDAP中未存在新增的用户账号，会自动注册一个新账号，口令与登录账号相同
+  # - 如果用户账号在LDAP已经存在，将不会变动LDAP中的任何信息，即使用户姓名等信息与LDAP中不一致，也不会变更
+
   class User
     @@manager = nil
 
