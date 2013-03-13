@@ -55,8 +55,8 @@ end
 
 
 Spork.each_run do
-  load "#{Rails.root}/config/routes.rb"
-  Dir["#{Rails.root}/app/**/*.rb"].each {|f| load f}
+  load "#{ENGINE_RAILS_ROOT}/config/routes.rb"
+  Dir["#{ENGINE_RAILS_ROOT}/app/models/**/*.rb"].each {|f| load f}
 
   FactoryGirl.reload
   SimpleCov.start
