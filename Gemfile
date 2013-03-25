@@ -28,6 +28,7 @@ gem "mongoid", "~> 3.0"
 gem "thin"
 gem "i18n"
 gem 'zhiyi-member', :git => 'git@task.zhiyisoft.com:talent/zhiyi/zhiyi-member.git'
+gem 'zhiyi-bootstrap-rails', :require => 'bootstrap-rails',:git => "https://github.com/zhiyisoft/bootstrap-rails.git", :ref => 'HEAD'
 gem 'cancan'
 
 gem "will_paginate_mongoid"
@@ -35,7 +36,8 @@ gem 'simple_form'
 gem 'nested_form'
 gem 'cells'
 
-gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails'
+# gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails'
+
 gem 'bootstrap-will_paginate'
 gem 'bootstrap_helper'
 

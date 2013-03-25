@@ -14,7 +14,7 @@ class Unirole::Rank
   include Mongoid::Document
   include Mongoid::Ancestry
   has_ancestry
-  index({ancestry: 1})
+  # index({ancestry: 1})
 
   field :seq, type: Integer, default: 0
   field :name, type: String
