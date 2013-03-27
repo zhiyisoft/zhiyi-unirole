@@ -12,6 +12,7 @@ module Unirole
     has_ancestry
 
     field :name
+    field :order, :type =>Integer
     belongs_to :rank, class_name: "Unirole::Rank"
     has_many :actors, class_name: "Unirole::Actor"
     index({ancestry: 1})
