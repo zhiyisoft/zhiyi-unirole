@@ -24,5 +24,10 @@ Rake::RDocTask.new do |rd|
   rd.title = "Zhiyisoft Unirole"
 end
 
+require 'rspec/core/rake_task'
 
+RSpec::Core::RakeTask.new(:spec) do |config|
+end
+
+task :default => :spec
 

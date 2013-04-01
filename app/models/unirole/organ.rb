@@ -17,6 +17,7 @@ module Unirole
     has_many :actors, class_name: "Unirole::Actor"
     index({ancestry: 1})
 
+
     validates_presence_of :name, :rank
     validates_uniqueness_of :name, :scope => [:ancestry]
     validate :validate_rank
@@ -38,7 +39,7 @@ module Unirole
     ##
     # 列出可以成为该部门下属的单位等级
     def sub_ranks
-      Unirole::Rank.gt(seq: rank.seq)
+      rank.subs
     end
 
     def users
