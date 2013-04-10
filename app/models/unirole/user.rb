@@ -12,7 +12,7 @@ module Unirole
   #
   # === 添加 Gemfile
   # 在 Rails App中的Gemfile加上一行：
-  #    gem 'zhiyi-member', :git => 'git@task.zhiyisoft.com:talent/zhiyi/zhiyi-member.git'
+  #    gem 'zhiyi-member', :git => 'git@task.zhiyisoft.com:github/zhiyi-ldap-member.git'
   #
   # === 配置启动器
   # 在 Rails App中加入文件： #{RAILS_ROOT}/config/initializers/user_manager.rb，
@@ -131,6 +131,29 @@ module Unirole
 
     def take_on? actor
       actors.include?(actor)
+    end
+
+
+    ##
+    # 检查一名用户是否在其角色中拥有某种身份
+    #
+    # 可以使用身份的名称：
+    #
+    #    user.has_membership_of? '领导'
+    #
+    # 也可以使用身份的对象：
+    #
+    #    ship = Unirole::Membership.find_by(name: '领导')
+    #    user.has_membership_of? ship
+    #
+    def has_membership_of?(membership)
+      if membership.instance_of?(String)
+        ship = Unirole::Membership.where(name: membership).first
+        return false unless ship
+      else
+        ship = membership
+      end
+      actors.where(membership: ship).count > 0
     end
   end
 end
