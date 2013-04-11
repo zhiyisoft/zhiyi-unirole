@@ -40,4 +40,10 @@ class Unirole::Rank
 
     self.class.gt(seq: self.seq)
   end
+  
+  def self.leaf
+    all.inject([]) do |result, rank|
+      rank.children.size ==0 ? result : (result << rank.id)
+    end
+  end
 end
