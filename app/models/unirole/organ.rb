@@ -41,7 +41,7 @@ module Unirole
     def sub_ranks
       rank.subs
     end
-
+    
     scope :without_ranks,lambda {|ranks| where(:rank_id.nin ranks) }
 
     def users
