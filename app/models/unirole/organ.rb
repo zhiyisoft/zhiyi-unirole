@@ -42,7 +42,7 @@ module Unirole
       rank.subs
     end
 
-    scope :without_ranks,lambda {|ranks| where(:rank_id.not_in ranks) }
+    scope :without_ranks,lambda {|ranks| where(:rank_id.nin ranks) }
 
     def users
       actors.map {|x| x.users}.flatten.uniq
