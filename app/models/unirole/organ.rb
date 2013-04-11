@@ -12,6 +12,7 @@ module Unirole
     has_ancestry
 
     field :name
+    field :order, :type =>Integer
     belongs_to :rank, class_name: "Unirole::Rank"
     has_many :actors, class_name: "Unirole::Actor"
     # index({ancestry: 1})
@@ -40,6 +41,8 @@ module Unirole
     def sub_ranks
       rank.subs
     end
+
+    scope :without_ranks,lambda {|ranks| where(:rank_id.nin ranks) }
 
     def users
       actors.map {|x| x.users}.flatten.uniq

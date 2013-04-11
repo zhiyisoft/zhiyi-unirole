@@ -27,8 +27,6 @@ gem "haml"
 gem "mongoid", "~> 3.0"
 gem "thin"
 gem "i18n"
-gem 'zhiyi-member', :git => 'git@task.zhiyisoft.com:talent/zhiyi/zhiyi-member.git'
-gem 'zhiyi-bootstrap-rails', :require => 'bootstrap-rails',:git => "https://github.com/zhiyisoft/bootstrap-rails.git", :ref => 'HEAD'
 gem 'cancan'
 
 gem "will_paginate_mongoid"
