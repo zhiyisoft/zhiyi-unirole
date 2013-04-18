@@ -119,8 +119,9 @@ module Unirole
       u.register if um.exist?(u.login)
     end
 
-    def organs
-      actors.where(membership_id: Membership.default.id).map {|x| x.organ}.uniq
+    def organs(only_member = false)
+      as = only_member ? actors.where(membership_id: Membership.default.id) : actors
+      as.map {|x| x.organ}.uniq 
     end
 
     def member_of? organ, membership = Membership.default
