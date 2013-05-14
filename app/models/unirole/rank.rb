@@ -24,6 +24,9 @@ class Unirole::Rank
   validates_presence_of :seq, :name
   validates_uniqueness_of :name
 
+
+
+
   ##
   # 低等级可以成为高等级的下属，反之或者同级则不行
   def member_of? other
@@ -40,10 +43,12 @@ class Unirole::Rank
 
     self.class.gt(seq: self.seq)
   end
-  
+
   def self.leaf
     all.inject([]) do |result, rank|
-      rank.children.size ==0 ? result : (result << rank.id)
+      rank.children.size ==0 ? (result << rank.id) : result
     end
   end
+
+  scope :leafs, where(:id.in => Unirole::Rank.leaf)
 end
