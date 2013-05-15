@@ -104,21 +104,20 @@ module Unirole
       user.name = user.sn + user.cn
     end
 
-    #因为不同的系统用户的属性不一致，所以需要分别在各个系统中实现after_create方法
-    #after_create do |u|
-      #um = u.class.manager
-      #return unless um
-      #return u.register if um.exist?(u.login)
+    after_create do |u|
+      um = u.class.manager
+      return unless um
+      return u.register if um.exist?(u.login)
 
-      #um.add({
-        #uid: u.login,
-        #sn: u.sn,
-        #cn: u.cn,
-        #displayName: (u.sn + u.cn),
-        #userPassword: u.login
-      #})
-      #u.register if um.exist?(u.login)
-    #end
+      um.add({
+        uid: u.login,
+        sn: u.sn,
+        cn: u.cn,
+        displayName: (u.sn + u.cn),
+        userPassword: u.login
+      })
+      u.register if um.exist?(u.login)
+    end
 
     def organs(only_member = false)
       as = only_member ? actors.where(membership_id: Membership.default.id) : actors
