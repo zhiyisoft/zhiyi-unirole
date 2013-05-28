@@ -15,7 +15,7 @@ module Unirole
     end
 
     def create
-      user_id = params[:actor]["user_ids"].delete_if(&:nil?).first
+      user_id = params[:actor]["user_ids"].delete_if(&:empty?).first
       @user = Unirole::User.find(user_id)
       @actor = Unirole::Actor.find_or_create_by(organ_id: params[:actor]["organ_id"], membership_id: params[:actor]["membership_id"])
       @user.actors << @actor
