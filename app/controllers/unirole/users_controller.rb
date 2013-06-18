@@ -40,6 +40,7 @@ module Unirole
     end
 
     def destroy
+      @user = Unirole::User.find(params[:id])
       @user.delete
       respond_with @user
     end
